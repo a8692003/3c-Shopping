@@ -1,0 +1,134 @@
+<header>
+  <nav class="header">
+    <ul>
+      <li class="sidenav-btn-bar">
+        <span class="sidenav-btn" style="font-size:40px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+      </li>
+
+      <li class="logo-bar">
+        <a href="/" title="回首頁"><img src="/public/images/logo/cambuyLogo.png" alt="cambuyLogo" /></a>
+      </li>
+      <li class="ipt-bar d-none d-lg-none d-xl-block">
+        <form>
+          <input type="text" name="search" placeholder="搜尋商品" /><button style="cursor: default;" type="submit" title="搜尋">
+            <img src="/public/images/icons/search.png" alt="search" />
+          </button>
+        </form>
+        <div id="search-result">
+          <ul>
+            <li><a href="#">1</a></li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </li>
+      <input type="checkbox" name="" id="mode" <%=setting.darkmode? 'checked' : '' %>>
+      <label for="mode"><span></span></label>
+      <script async src="/public/js/setting.js"></script>
+      </li>
+      <li id="notification" class="icon-bar d-none d-lg-none d-xl-block notification">
+          <a title="通知" id="notify"><svg style="color: rgba(128, 129, 128, 1);" xmlns="http://www.w3.org/2000/svg" width="23"
+              height="23" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+              <path
+                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+            </svg></a>
+      </li>
+      <!-- <li>
+        <a href="/login" title="會員中心"><img src="/public/images/icons/member.png" alt="member" /></a>
+      </li> -->
+
+      <li class="icon-bar d-none d-lg-none d-xl-block member">
+        <a href="/member" title="會員中心" id="member-link"><svg style="color: rgba(128, 129, 128, 1);"
+            xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg></a>
+          <% if (userId) { %>
+            <div class="hidden" id="member-content">
+              <a class="text-black">
+                <div class="individual-member">
+                  <a href="/member">
+                    <h5><b>會員中心</b></h5>
+                  </a>
+                </div>
+              </a>
+              <a class="text-black">
+                <div class="individual-member">
+                  <a id="logout">
+                    <h5><b>登出</b></h5>
+                  </a>
+                </div>
+              </a>
+            </div>
+          <% } %>
+        
+      </li>
+
+      <li class="icon-bar d-none d-lg-none d-xl-block">
+        <a href="/shopCart" title="購物車"><svg style="color: rgba(128, 129, 128, 1);" xmlns="http://www.w3.org/2000/svg"
+            width="23" height="23" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+            <path
+              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          </svg></a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<!-- RWD-側邊Nav -->
+<div id="mySidenav" class="sidenav">
+  <nav class="navSide">
+    <ul>
+      <li>
+        <form>
+          <input type="text" name="search" value="search" /><button type="submit" title="搜尋">
+            <img src="/public/images/icons/search.png" alt="search" />
+          </button>
+        </form>
+      </li>
+      <li class="icon">
+        <a href="#" title="會員中心">
+          <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor" class="bi bi-person-circle"
+            viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>會員中心
+        </a>
+      </li>
+      <li class="icon">
+        <a href="#" title="通知"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor"
+            class="bi bi-bell-fill" viewBox="0 0 16 16">
+            <path
+              d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+          </svg>通知服務</a>
+      </li>
+      <li class="icon"><a href="#" title="購物車"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29"
+            fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+            <path
+              d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+          </svg>購物車</a></li>
+      <li class="icon"><a href="#" title="購物車"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29"
+            fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
+            <path fill-rule="evenodd"
+              d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+          </svg>登出</a></li>
+      <li class="my-border">
+        </p>
+      </li>
+      <li><a href="#">apple</a> </li>
+      <li><a href="#">acer</a></li>
+      <li><a href="#">asus</a></li>
+      <li><a href="#">msi</a></li>
+      <li><a href="#">Lenovo</a></li>
+      <li><a href="#">Miscroft</a></li>
+      <li><a href="#">Hp</a></li>
+      <li><a href="#">DELL</a></li>
+    </ul>
+  </nav>
+</div>

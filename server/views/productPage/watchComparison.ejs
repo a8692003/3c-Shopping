@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="AZhang" />
+    <title>ComBuy - 產品</title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+    <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/universal/notification.css"
+    />
+
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+      div.col-3 {
+        padding: 0px;
+      }
+      main {
+        margin: 16px;
+      }
+      p {
+        padding: 2rem;
+        margin: 0rem;
+        border-bottom: 1px solid black;
+        height: 100px;
+        align-self: center;
+      }
+      p:nth-child(5) {
+        height: 150px;
+      }
+      p:nth-child(9) {
+        height: 150px;
+      }
+      .pname {
+        color: black;
+        font-size: 18px;
+        display: block;
+        padding: 3rem 0rem;
+        margin: 0rem;
+        border-bottom: 1px solid black;
+        height: 100px;
+        align-self: center;
+        text-decoration: none;
+        position: sticky;
+        top: 90px;
+        z-index: 5;
+        background-color: white;
+        padding: 1rem;
+      }
+      .pname:hover {
+        background-color: lightgray;
+        color: white;
+      }
+      p:nth-last-child(1) {
+        border-bottom: none;
+      }
+    </style>
+  </head>
+  <body>
+    <%-await include('../header'); %>
+
+    <main class="row">
+      <div class="col-3 text-center justify-content-center">
+        <div style="width: 200px; height: 200px"></div>
+        <p
+          style="
+            height: 100px;
+            position: sticky;
+            top: 90px;
+            z-index: 5;
+            background-color: white;
+          "
+        >
+          產品名稱
+        </p>
+        <p>廠牌</p>
+        <p>價格</p>
+        <p>中央處理器(CPU)</p>
+        <p>圖形處理器(GPU)</p>
+        <p>記憶體(RAM)</p>
+        <p>作業系統(OS)</p>
+        <p>螢幕</p>
+        <p>電量</p>
+        <p>筆電尺寸大小</p>
+        <p>筆電重量</p>
+        <p>售後保固</p>
+      </div>
+    </main>
+    <footer>
+      <div class="info-href">
+        <!-- 會員中心 -->
+        <div class="href col-12 col-sm-12 col-lg-2">
+          <h5 class="ms-5">會員中心</h5>
+          <ul class="ms-5">
+            <li><a href="/member">管理會員資料</a></li>
+            <li><a href="/member/orderlist">查看訂單</a></li>
+            <li><a href="/member/orderlist">購物紀錄</a></li>
+          </ul>
+        </div>
+        <!-- 客戶服務 -->
+        <div class="href mt-sm-0 col-12 col-sm-12 col-lg-2">
+          <h5 class="ms-5">客戶服務</h5>
+          <ul class="ms-5">
+            <li><a href="#">常見問題</a></li>
+            <li><a href="/member/orderlist">查看訂單</a></li>
+            <li><a href="#">退貨政策</a></li>
+            <li><a href="#">商品保固</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-8"></div>
+      </div>
+      <canvas></canvas>
+
+      <div class="info" style="height: 50px">
+        <ul class="ms-5">
+          <li><a href="#">隱私權政策</a>|</li>
+          <li><a href="#">使用條款</a>|</li>
+          <li><a href="#">銷售及退款</a></li>
+        </ul>
+        <p style="height: 50px">Copyright © 2023 XXXXXX. All Rights Reserved</p>
+      </div>
+    </footer>
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script src="/public/js/productPage/productJS.js"></script>
+    <script src="/public/js/productPage/watchComparison.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </body>
+</html>

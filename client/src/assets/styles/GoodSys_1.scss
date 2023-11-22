@@ -1,0 +1,475 @@
+/* The sidebar menu */
+
+.sidenav {
+  height: calc(100% - 60px);  /* 減去nav-top的高度 */
+  width: 15%;
+  position: fixed;
+  z-index: 1;
+  top: 60px;  /* 從nav-top的底部開始 */
+  left: 0;
+  background-color: #F2F2F2;
+  overflow-x: hidden;
+  border-right: 1px solid #ddd;
+  transition: 0.3s;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  color: #333;
+  display: block;
+  transition: 0.3s;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidenav a:last-child {
+  border-bottom: none;
+}
+
+.sidenav a:hover {
+  color: #F2F2F2;
+  background-color: #333;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.top1,
+.top2 {
+  display: block;
+  margin-left: 16%;
+  margin-right: 1%;
+  background-color: #fff;
+
+}
+
+.top2 {
+  &-r10px {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  &-b10px {
+    border-radius: 10px;
+  }
+
+  &-bgray {
+    background-color: #F2F2F2;
+  }
+}
+
+.rbgray,
+.gray1,
+.gray2,
+.gray3,
+.even-row {
+  background-color: #F2F2F2;
+}
+
+.gray1,
+.gray3 {
+  border-radius: 10px;
+}
+
+.gray3 {
+  height: auto;
+}
+
+.titlefont {
+  font-size: 25px;
+  display: inline-block;
+  padding: 1%;
+}
+
+.titlefont-blue {
+  color: #2D59F5;
+}
+
+.butt1 {
+  width: 10%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+.iphone {
+  width: 150px;
+}
+
+body {
+  background-color: #DFD9D9;
+}
+
+
+.txtara,
+.conarae {
+  border: 1px solid #D9D9D9;
+  
+  &:focus {
+    border-color: #D9D9D9;
+    outline: none;
+  }
+}
+
+.conarae {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+
+// .inputS, .stockinput {
+  //   width: 20%;
+  //   height: 30px;
+// }
+
+// .inputS {
+  //   border: 2px #D9D9D9 solid;
+  // }
+  
+  .input-right-placeholder::placeholder {
+    direction: rtl;
+    text-align: right;
+  }
+.titlerow {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.titlerowfit {
+  display: flex;
+  align-items: center;
+  width: auto;
+  min-height: 40px; // 例如，設定最小高度為40px
+  max-height: 80px; // 設定最大高度為80px
+  overflow: hidden; // 確保內容不會溢出
+  // white-space: nowrap; // 防止文字換行
+  text-overflow: ellipsis; // 當文字超出時，會在結尾顯示省略號
+  
+}
+
+.mtt {
+  margin-top: 0px;
+}
+
+.menu {
+  width: 500px;
+}
+
+#category-selection,
+#sub-category-selection {
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 1;
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  height: 200px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: black;
+}
+
+.odd-row {
+  background-color: #ffffff;
+}
+
+
+
+/* CSS: 隱藏原生文件選擇器但仍保持其功能 */
+.custom-file-input:lang(en)~.custom-file-label::after {
+  content: "選擇檔案";
+}
+
+.custom-file-input {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+/* 覆寫 Bootstrap 的原生樣式 */
+.custom-file-label {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.custom-file-label::after {
+  display: none;
+}
+
+
+.custom-file-label {
+  background-color: #007bff;
+  /* Bootstrap btn-primary 背景色 */
+  border-color: #007bff;
+  /* Bootstrap btn-primary 邊框色 */
+  color: #fff;
+  /* Bootstrap btn 文字色 */
+  border-radius: 0.25rem;
+  /* Bootstrap 按鈕的邊框半徑 */
+  display: inline-block;
+  font-weight: 400;
+  /* 字體粗度 */
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  /* 過渡效果 */
+  padding: 0.375rem 0.75rem;
+  /* 內距 */
+  font-size: 1rem;
+  /* 字體大小 */
+  line-height: 1.5;
+  user-select: none;
+  /* 避免使用者選擇文字 */
+}
+
+/* 當鼠標懸停在標籤上時的樣式 */
+.custom-file-label:hover {
+  background-color: #0056b3;
+  /* 更深的背景色 */
+  border-color: #0056b3;
+  /* 更深的邊框色 */
+}
+
+/* 當按鈕被按下時的樣式 */
+.custom-file-label:active,
+.custom-file-label:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  /* Bootstrap 按鈕聚焦效果 */
+  outline: 0;
+  /* 移除外框 */
+}
+
+
+
+.error-input {
+  border: 1px solid red;
+  box-shadow: 0 0 5px red;
+}
+
+.dropdown-fullwidth {
+  .btn {
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    width: 100%;
+  }
+}
+
+
+.editproduct-image {
+  width: 80px;
+  height: 200px;
+  object-fit: contain;
+}
+
+
+
+// 
+.image-item {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+}
+
+.editproduct-image1 {
+  display: block;
+  max-width: 100px; // 根據需求調整
+  width: 80px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.image-item .btn-danger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+
+.image-item {
+  position: relative; /* 使它的子元素可以使用 absolute 定位 */
+  display: inline-block; 
+  /* 其他必要的樣式 */
+}
+
+.introduce-badge {
+  position: absolute;
+  top: 5px;
+ left:  5px;
+  background-color: lightblue;
+  color: black;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.custom-badge {
+  /* 您想要的自定義樣式，例如： */
+  background-color: lightblue;
+  border: 1px solid white;
+}
+
+
+.hint {
+  background-color: #f8d7da;  // 粉紅色背景
+  color: #721c24;             // 深紅色文字
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.image-item:hover {
+  border: 2px solid lightblue;
+  cursor: pointer;
+}
+
+.image-item.selected {
+  background-color: rgba(0, 123, 255, 0.1); 
+}
+
+
+
+.enlarged-image {
+  max-width: 100%;
+  max-height: 80vh; /* 限制圖片高度，使其不超過視窗的80% */
+}
+
+
+.input-error {
+  border-color: red;
+}
+
+// 
+// 
+// 
+// 
+
+/* 基本樣式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 常用樣式 */
+.titlefont {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.titlefont-blue {
+  color: #007BFF;
+}
+
+/* top 樣式 */
+.top2 {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius : 10px;
+}
+
+.top2-b10px {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.top2-r10px {
+  border-right: 1px solid #e0e0e0;
+}
+
+.top2-bgray {
+  background-color: white;
+}
+
+/* 商品列表 */
+.even-row, .odd-row {
+  padding: 15px 0;
+  transition: background-color 0.3s;
+}
+
+.even-row:hover, .odd-row:hover {
+  background-color: rgba(0,123,255,0.1);
+}
+
+.odd-row {
+  background-color: #fff;
+}
+
+/* 按鈕樣式 */
+.butt1 {
+  padding: 5px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.butt1:hover {
+  background-color: #0056b3;
+}
+
+.btn {
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+

@@ -1,0 +1,11 @@
+CREATE TABLE product_images_test (
+    id INT(11) AUTO_INCREMENT PRIMARY KEY,
+    prod_id INT(11) NOT NULL,
+    originalname VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    stored_name VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    upload_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    file_size INT(11) NOT NULL,
+    mime_type VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    img_src VARCHAR(150) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    INDEX (prod_id)
+);

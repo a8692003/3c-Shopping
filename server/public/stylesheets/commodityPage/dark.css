@@ -1,0 +1,225 @@
+body.dark-mode {
+    background-color: #323232;
+    color: #ffffff;
+}
+
+body.dark-mode header {
+    background-color: #323232;
+    box-shadow: 1px 1px 20px 2px rgba(255, 255, 255, 0.204);
+}
+
+body.dark-mode header nav.header ul li form input {
+    border: 1px solid rgb(33, 33, 33);
+}
+
+body.dark-mode header nav.header ul li form button[type=submit] {
+    background-color: rgb(57, 57, 57);
+}
+
+body.dark-mode header nav.header ul li label.switch input:checked+.slider {
+    background-color: rgb(255, 255, 255);
+}
+
+body.dark-mode header nav.header ul li label.switch input:focus+.slider {
+    box-shadow: 0 0 1px rgb(255, 255, 255);
+}
+
+body.dark-mode header nav.header ul li span.slider {
+    background-color: #393939;
+}
+
+body.dark-mode header nav.header ul li span.slider::before {
+    background-color: rgb(78, 78, 78);
+}
+
+body.dark-mode header nav.header ul li span.slider.moon {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode main aside {
+    background-color: rgb(0, 0, 0);
+}
+
+body.dark-mode main aside nav.navSide ul li a {
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode main section.info form select {
+    background-color: rgb(0, 0, 0);
+}
+
+body.dark-mode main section.info form button {
+    background-color: rgb(6, 6, 6);
+}
+
+body.dark-mode main section.info form input {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode main section.info form input:focus {
+    border: none;
+    border-color: rgb(0, 0, 0);
+}
+
+body.dark-mode main section.info section.productBox div div.product {
+    width: 90%;
+    margin: 2rem;
+    border-radius: 10px;
+    padding-bottom: 1rem;
+    background-color: rgb(0, 0, 0);
+}
+
+body.dark-mode main section.info section.productBox div div.product:hover {
+    box-shadow: 1px 1px 20px 2px rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode main section.info section.productBox div div.product button {
+    background-color: rgb(0, 0, 0);
+}
+
+body.dark-mode main section.info section.contral-product-page a {
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode main section.info section.contral-product-page a.active {
+    background-color: rgb(128, 129, 128);
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode main section.info section.contral-product-page a:hover:not(.active) {
+    background-color: rgb(70, 70, 70);
+}
+
+body.dark-mode footer {
+    background-color: rgb(128, 129, 128);
+}
+
+body.dark-mode footer div.info-href div.href h5 {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode footer div.info-href div.href ul li {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode footer div.info-href div.href ul li a {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode footer canvas {
+    border: 1px solid rgb(0, 0, 0);
+}
+
+body.dark-mode footer div.info ul li {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode footer div.info ul li a {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode footer div.info p {
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode button.top-btn {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode button.top-btn:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+
+body.dark-mode #num {
+    background-color: rgb(78, 78, 78);
+    color: #ffffff;
+    border: 1px solid #3b3b3b;
+}
+
+body.dark-mode #minus {
+    color: #ffffff;
+    background-color: #1a1a1ae7;
+    border: 1px solid #3b3b3b;
+}
+
+body.dark-mode #plus {
+    color: #ffffff;
+    background-color: #1a1a1ae7;
+    border: 1px solid #3b3b3b;
+}
+
+body.dark-mode .dollar {
+    background-color: #282828;
+}
+
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: #4d4d4d;
+}
+
+body.dark-mode .center-table th,
+body.dark-mode .center-table td {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+body.dark-mode .circle {
+    background-color: #666666;
+    color: #000000;
+}
+
+body.dark-mode .pagination a {
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .pagination a.active {
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+}
+
+body.dark-mode .pagination a:hover:not(.active) {
+    background-color: #333333;
+}
+
+body.dark-mode .priceIcon a {
+    color: #ffffff;
+}
+
+/* 回到頂部按鈕 */
+body.dark-mode .toTop-arrow {
+    background: #ffffff;
+}
+
+body.dark-mode a {
+    color: #ffffff;
+}
+
+body.dark-mode #notification-content {
+    background-color: #828282;
+}
+
+body.dark-mode .individual-notification {
+    background-color: #c9c9c9;
+
+}
+
+body.dark-mode .individual-notification:hover {
+    background-color: #b8b8b8;
+}
+
+body.dark-mode section {
+    background-color: #3b3b3b;
+}
+
+body.dark-mode .card {
+    background-color: #000000;
+}
+
+body.dark-mode .card .bi {
+    color: #ffffff;
+}

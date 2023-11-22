@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy- <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%-await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>收藏商品</h5>
+          </div>
+        </div>
+        <div class="content">
+          <% if(total != 0){ %>
+          <div class="table">
+            <table>
+              <thead>
+                <tr class="underLine">
+                  <th>商品圖片</th>
+                  <th colspan="2">商品名稱</th>
+                  <th>收藏日期</th>
+                  <th>售 價</th>
+                  <th>狀 態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(data of collects){%>
+                <tr>
+                  <td>
+                    <img src="/public/<%= data.img_src %>" alt="" srcset="" style="width: 100%" />
+                  </td>
+                  <td colspan="2"><%=data.prod_name%> <br /><%=data.spec_name%></td>
+                  <td><%=data.update_time %></td>
+                  <td><%=data.price%></td>
+                  <td style="<%= data.public==0 || data.inventory == 0 ? 'color:red' :'' %>">
+                    <%= data.public==0 ? '已下架' : data.inventory==0 ? '缺貨中': '正常'%>
+                  </td>
+                </tr>
+                <tr class="underLine">
+                  <td colspan="3">
+                    <a href="/commodity/<%=data.prod_id%>/<%=data.spec_id%>">
+                      <input type="button" class="button" value="查看商品" />
+                    </a>
+                  </td>
+                  <td colspan="3">
+                    <input
+                      type="button"
+                      class="button btnCollect"
+                      value="取消收藏"
+                      prod="<%=data.prod_id%>"
+                      spec="<%=data.spec_id%>"
+                    />
+                  </td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+          <%-await include('./template/pages'); %> <%}else{%>
+          <h4>尚未有任何收藏</h4>
+          <%}%>
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

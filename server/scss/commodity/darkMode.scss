@@ -1,0 +1,235 @@
+body.dark-mode {
+    background-color: #323232;
+    color: #ffffff;
+
+    header {
+      background-color: #323232;
+      box-shadow: 1px 1px 20px 2px rgba(255, 255, 255, 0.204);
+
+      nav.header ul li {
+        form {
+          input {
+            border: 1px solid rgb(33, 33, 33);
+          }
+
+          button[type=submit] {
+            background-color: rgb(57, 57, 57);
+          }
+        }
+
+        label.switch input {
+          &:checked + .slider {
+            background-color: rgb(255, 255, 255);
+          }
+
+          &:focus + .slider {
+            box-shadow: 0 0 1px rgb(255, 255, 255);
+          }
+        }
+
+        span.slider {
+          background-color: #393939;
+
+          &::before {
+            background-color: rgb(78, 78, 78);
+          }
+
+          &.moon {
+            color: rgb(0, 0, 0);
+          }
+        }
+      }
+    }
+
+    main {
+      aside {
+        background-color: rgb(0, 0, 0);
+
+        nav.navSide ul li a {
+          color: rgb(255, 255, 255);
+        }
+      }
+
+      section.info {
+        form {
+          select {
+            background-color: rgb(0, 0, 0);
+          }
+
+          button {
+            background-color: rgb(6, 6, 6);
+          }
+
+          input {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgb(255, 255, 255);
+
+            &:focus {
+              border: none;
+              border-color: rgb(0, 0, 0);
+            }
+          }
+        }
+
+        section {
+          &.productBox div div.product {
+            width: 90%;
+            margin: 2rem;
+            border-radius: 10px;
+            padding-bottom: 1rem;
+            background-color: rgb(0, 0, 0);
+
+            &:hover {
+              box-shadow: 1px 1px 20px 2px rgba(255, 255, 255, 0.3);
+            }
+
+            button {
+              background-color: rgb(0, 0, 0);
+            }
+          }
+
+          &.contral-product-page a {
+            color: rgb(255, 255, 255);
+
+            &.active {
+              background-color: rgb(128, 129, 128);
+              color: rgb(0, 0, 0);
+            }
+
+            &:hover:not(.active) {
+              background-color: rgb(70, 70, 70);
+            }
+          }
+        }
+      }
+    }
+
+    footer {
+      background-color: rgb(128, 129, 128);
+
+      div.info-href div.href {
+        h5 {
+          color: rgb(0, 0, 0);
+        }
+
+        ul li {
+          color: rgb(0, 0, 0);
+
+          a {
+            color: rgb(0, 0, 0);
+          }
+        }
+      }
+
+      canvas {
+        border: 1px solid rgb(0, 0, 0);
+      }
+
+      div.info {
+        ul li {
+          color: rgb(0, 0, 0);
+
+          a {
+            color: rgb(0, 0, 0);
+          }
+        }
+
+        p {
+          color: rgb(0, 0, 0);
+        }
+      }
+    }
+
+    button.top-btn {
+      border: 1px solid rgb(255, 255, 255);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: rgb(0, 0, 0);
+
+      &:hover {
+        background-color: rgb(0, 0, 0);
+      }
+    }
+
+    #num {
+      background-color: rgb(78, 78, 78);
+      color: #ffffff;
+      border: 1px solid #3b3b3b;
+    }
+
+    #minus, #plus {
+      color: #ffffff;
+      background-color: #1a1a1ae7;
+      border: 1px solid #3b3b3b;
+    }
+
+    .dollar {
+      background-color: #282828;
+    }
+
+    table, th, td {
+      border: 1px solid rgb(255, 255, 255);
+      background-color: #4d4d4d;
+    }
+
+    .center-table {
+      th, td {
+        border: 1px solid rgb(255, 255, 255);
+      }
+    }
+
+    .circle {
+      background-color: #666666;
+      color: #000000;
+    }
+
+    .pagination a {
+      color: rgb(255, 255, 255);
+
+      &.active {
+        background-color: #4CAF50;
+        color: rgb(0, 0, 0);
+      }
+
+      &:hover:not(.active) {
+        background-color: #333333;
+      }
+    }
+
+    .priceIcon a {
+      color: #ffffff;
+    }
+
+    .toTop-arrow {
+      background: #ffffff;
+    }
+
+    a {
+      color: #ffffff;
+    }
+
+    #notification-content {
+      background-color: #828282;
+    }
+
+    .individual-notification {
+      background-color: #c9c9c9;
+
+      &:hover {
+        background-color: #b8b8b8;
+      }
+    }
+
+    section {
+      background-color: #3b3b3b;
+    }
+
+    .card {
+      background-color: #000000;
+
+      .bi {
+        color: #ffffff;
+      }
+    }
+  }
+
+  /* 回到頂部按鈕 */

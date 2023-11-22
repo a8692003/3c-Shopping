@@ -1,0 +1,158 @@
+$white: rgba(255, 255, 255, 1);
+$gray: rgba(242, 242, 242, 1);
+$lgray: rgba(204, 204, 204, 1);
+$mgray: rgba(165, 165, 165, 1);
+$hGray: rgba(128, 129, 128, 1);
+$black: rgba(0, 0, 0, 1);
+@mixin flexbox($direction) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: $direction;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: $gray;
+  width: 100%;
+  box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, 0.204);
+  nav.header {
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+      @include flexbox(row);
+      list-style-type: none;
+      align-items: center;
+      justify-content: center;
+      li {
+        margin: 0.25rem 2rem;
+        img[alt='cambuyLogo'] {
+          width: 128px;
+        }
+        form {
+          input {
+            border-radius: 10px 0px 0px 10px;
+            border: 1px solid $gray;
+            padding: 0.25rem 0.5rem;
+            width: 30vw;
+          }
+          button[type='submit'] {
+            border-radius: 0px 10px 10px 0px;
+            border: none;
+            background-color: $hGray;
+            padding: 0.25rem;
+            width: 108px;
+            img {
+              width: 20px;
+            }
+          }
+        }
+        div#search-result {
+          width: 30vw;
+          background-color: $white;
+          border-left: 2px solid $hGray;
+          border-right: 2px solid $hGray;
+          border-bottom: 2px solid $hGray;
+          border-radius: 0px 0px 10px 10px;
+          display: none;
+          position: absolute;
+          ul {
+            padding-left: 0;
+            margin-bottom: 0;
+            @include flexbox(column);
+            list-style-type: none;
+            align-items: start;
+            justify-content: start;
+            li {
+              margin: 0;
+              width: 100%;
+              &:hover {
+                background-color: $gray;
+              }
+              a {
+                display: block;
+                width: 100%;
+                font-size: 1rem;
+                color: $black;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+        label.switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+          input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            &:checked + .slider {
+              background-color: $black;
+            }
+            &:focus + .slider {
+              box-shadow: 0 0 1px $black;
+            }
+            &:checked + .slider:before {
+              -webkit-transform: translateX(26px);
+              -ms-transform: translateX(26px);
+              transform: translateX(26px);
+            }
+          }
+        }
+        span.slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: 0.4s;
+          transition: 0.4s;
+          &::before {
+            position: absolute;
+            content: '';
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+          }
+        }
+        span.slider.round {
+          border-radius: 34px;
+          padding-left: 36px;
+          padding-top: 4px;
+          &:before {
+            border-radius: 50%;
+          }
+        }
+        span.slider.moon {
+          border-radius: 34px;
+          padding-left: 12px;
+          padding-top: 4px;
+          color: $white;
+          &:before {
+            border-radius: 50%;
+          }
+        }
+        .sun {
+          display: block;
+        }
+        .moon {
+          display: none;
+        }
+        a {
+          text-decoration: none;
+          img {
+            width: 24px;
+          }
+        }
+      }
+    }
+  }
+}

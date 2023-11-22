@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/login_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+
+    <main>
+      <section class="member container container-S">
+        <div class="subtitle">
+          <div class="group">
+            <a href="/login" class="active"><h5>登入</h5></a>
+            <a href="/register"><h5>註冊</h5></a>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <h5 style="text-align: center">
+              忘記密碼
+              <br />
+              <span style="font-size: 0.75em; font-weight: normal"
+                >別擔心！讓我們協助您重新設定</span
+              >
+              <br />
+              <br />
+              <span class="alert" id="alert"></span>
+            </h5>
+          </div>
+          <form action="" method="post">
+            <div class="box">
+              <label for="iptMail">電子信箱</label>
+              <input
+                type="email"
+                class="input-L"
+                name="mail"
+                id="iptMail"
+                placeholder="請輸入您的電子信箱"
+                required
+              />
+            </div>
+            <div class="submit">
+              <input type="submit" value="送 出" />
+            </div>
+          </form>
+          <hr />
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

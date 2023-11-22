@@ -1,0 +1,285 @@
+main {
+  padding: 96px 0;
+  @extend %displayFlexCenter;
+}
+.alert {
+  color: red;
+}
+section {
+  &.member {
+    &.container {
+      width: 95%;
+
+      &.container-L {
+        max-width: 1200px;
+
+        > div.content {
+          > form {
+            max-width: 960px;
+          }
+        }
+      }
+
+      &.container-S {
+        max-width: 960px;
+
+        > div.content {
+          > form {
+            max-width: 640px;
+          }
+        }
+      }
+
+      div.memberList {
+        padding: 1.5em 0;
+
+        ul {
+          @extend %displayFlexCenter;
+          flex-wrap: wrap;
+          row-gap: 12px;
+          list-style: none;
+        }
+
+        li {
+          margin: 0 auto;
+          color: var(--color_5);
+
+          a {
+            display: inline-block;
+            width: 100%;
+            @include font(4);
+            font-weight: bold;
+            text-align: center;
+          }
+
+          &.active {
+            color: var(--color_6);
+          }
+          &:hover {
+            filter: drop-shadow(0 0 15px var(--color_5));
+          }
+          @include pad-width() {
+            display: inline-block;
+            width: 33%;
+          }
+          @include phone-width-L() {
+            width: 50%;
+          }
+        }
+      }
+
+      > div.subtitle {
+        padding: 24px 36px;
+        background-color: var(--color_5);
+        @extend %roundTop;
+        filter: drop-shadow(1em 1em 0px var(--color_3));
+        > div.group {
+          @extend %displayFlexCenter;
+          color: var(--color_1);
+
+          @include pad-width() {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+          }
+
+          a {
+            color: var(--color_3);
+
+            &.active {
+              color: var(--color_1);
+            }
+
+            padding: 0 1.5em;
+            letter-spacing: 1.25em;
+          }
+
+          &.group-left {
+            justify-content: start;
+            gap: 1em;
+
+            h5 {
+              letter-spacing: 0.25em;
+            }
+          }
+        }
+      }
+
+      > div.content {
+        background-color: var(--color_1);
+        padding: 36px 48px;
+        @extend %displayFlexCenter;
+        flex-wrap: wrap;
+        @extend %roundButton;
+
+        @include pad-width() {
+          padding: 36px 12px;
+        }
+        filter: drop-shadow(1em 1em 0px var(--color_3));
+
+        > div {
+          padding: 2em 0;
+          width: 100%;
+          @extend %displayFlexCenter;
+          gap: 1em;
+        }
+
+        > form {
+          width: 95%;
+          display: inherit;
+          flex-direction: column;
+          gap: $baseLineSize * 3;
+
+          > div {
+            @include pad-width() {
+              display: flex;
+              flex-direction: column;
+              gap: $baseLineSize;
+            }
+
+            div {
+              display: inline-block;
+            }
+
+            label {
+              margin-right: 1em;
+              letter-spacing: 0.2em;
+
+              @include pad-width() {
+                display: inline-block;
+                margin-right: 0.5em;
+              }
+            }
+
+            a {
+              margin: 0 1em;
+              text-decoration: underline;
+
+              @include pad-width() {
+                margin: 0 0.2em;
+              }
+            }
+
+            &.submit {
+              padding: 36px 0;
+              @extend %displayFlexCenter;
+              > div {
+                @extend %displayFlexCenter;
+                flex-wrap: wrap;
+                row-gap: 12px;
+              }
+            }
+
+            &.spacing {
+              label {
+                margin-right: 2em;
+                letter-spacing: 1em;
+              }
+            }
+            &.photoFrame {
+              position: fixed;
+              right: 4.5em;
+              & > label {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                & > img {
+                  border: {
+                    style: solid;
+                    color: var(--color_5);
+                    width: 1px;
+                  }
+                }
+              }
+              @include pc-width-S() {
+                position: initial;
+              }
+            }
+          }
+          &.center {
+            align-items: center;
+          }
+        }
+        div.table {
+          display: flex;
+          overflow-x: auto;
+          justify-content: flex-start;
+
+          table {
+            table-layout: fixed;
+            width: 100%;
+            min-width: 960px;
+            border-collapse: collapse;
+            tr {
+              &.underLine {
+                @extend %underLine;
+              }
+            }
+
+            th,
+            td {
+              padding: 24px 12px;
+              @include font(3);
+              text-align: center;
+            }
+
+            p {
+              text-align: justify;
+            }
+
+            table {
+              margin: 0 auto;
+              width: 90%;
+
+              th,
+              td {
+                padding: 12px 12px;
+                @extend %overflow-text;
+              }
+            }
+
+            img {
+              width: 200px;
+              height: 200px;
+              object-fit: contain;
+            }
+          }
+        }
+        .collapse {
+          tr {
+            &:not(tr:last-child) {
+              @extend %underLine;
+            }
+          }
+
+          th,
+          td {
+            padding: 12px 0;
+            @include font(2);
+          }
+        }
+
+        .stars {
+          display: flex;
+          flex-direction: row !important;
+          width: 2em;
+          height: 2em;
+        }
+
+        #memberId {
+          display: inline-block;
+          color: var(--color_5);
+
+          &:before {
+            content: '會員編號';
+            margin: 0 1em;
+            @include pad-width() {
+              padding: 1em 0;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

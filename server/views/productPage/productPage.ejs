@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="AZhang" />
+    <title>ComBuy - 產品</title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+    <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/universal/notification.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/productPage/productStyle.css"
+    />
+  </head>
+  <body>
+    <%-await include('../header'); %>
+    <div style="display: none" id="userId" data-user-id="<%= userId %>"></div>
+    <main class="row">
+      <%-await include('../brand'); %>
+      <section class="info col-12 col-xl-10">
+        <form class="productSlecet row">
+          <select
+            class="col-1"
+            name="selectItem"
+            data-brand="<%= getUserBrand %>"
+          >
+            <option value="">使用需求</option>
+            <option value="1">CP值</option>
+            <option value="5">極度輕薄</option>
+            <option value="6">開學季學生必推</option>
+            <option value="2">文書機</option>
+            <option value="3">電競機</option>
+            <option value="4">繪圖高效能機</option>
+          </select>
+
+          <span class="col-1 w-auto">上架時間</span>
+          <button
+            class="col-1 w-auto"
+            id="addTime"
+            type="button"
+            data-brand="<%= getUserBrand %>"
+          >
+            <img
+              src="/public/images/icons/chevron-down.svg"
+              alt="chevron-down"
+            />
+          </button>
+
+          <span class="col-1 w-auto">金額</span>
+          <button
+            class="col-1 w-auto"
+            id="priceDesc"
+            type="button"
+            data-brand="<%= getUserBrand %>"
+          >
+            <img
+              src="/public/images/icons/chevron-down.svg"
+              alt="chevron-down"
+            />
+          </button>
+          <div class="w-auto col-4 row mt-lg-0 mt-2">
+            <label class="col-3 w-auto" for="price"> 金額 </label>
+            <input
+              class="col-3 w-25"
+              id="price"
+              type="text"
+              name="priceFrom"
+              placeholder="0"
+              pattern="[0-9]{7}"
+              data-brand="<%= getUserBrand %>"
+            />
+
+            <label class="col-3 w-auto" for="priceTo"> 到 </label>
+            <input
+              class="col-3 w-25"
+              id="priceTo"
+              type="text"
+              name="priceTo"
+              placeholder="9999999"
+              pattern="[0-9]{7}"
+              data-brand="<%= getUserBrand %>"
+            />
+          </div>
+        </form>
+        <%-await include('./chageProdAndPage.ejs') %> <%-await
+        include('../footer.ejs') %>
+      </section>
+    </main>
+    <div
+      id="watchComparison"
+      title="查看比較"
+      style="
+        background-color: lightgray;
+        top: 100px;
+        box-shadow: 5px 5px rgba(253, 253, 253, 0.815);
+      "
+    >
+      <a
+        style="writing-mode: vertical-rl; text-orientation: upright"
+        target="_blank"
+        href="/product/watchComparison"
+        >查看比較</a
+      >
+    </div>
+    <!-- alert -->
+    <div class="alertGroup">
+      <div style="display: none">
+        <p
+          class="closebtn"
+          onclick="this.parentElement.parentElement.style.display='none';"
+        >
+          &times;
+        </p>
+
+        <p class="alert-text">123</p>
+      </div>
+    </div>
+    <button class="top-btn" id="topScreenBtn" title="返回頂部">
+      <img src="/public/images/icons/top-btn.svg" alt="top-btn" />
+    </button>
+    <button type="button" id="BackTop" class="toTop-arrow"></button>
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script src="/public/js/productPage/productJS.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </body>
+</html>

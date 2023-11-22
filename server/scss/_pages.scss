@@ -1,0 +1,14 @@
+div.pages {
+  display: flex;
+  padding: 1.5em 0;
+  .page {
+    @extend %displayFlexCenter;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 0.5em;
+
+    color: var(--color_1);
+    background-color: var(--color_5);
+    @extend %roundAll;
+  }
+}

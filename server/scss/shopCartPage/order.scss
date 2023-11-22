@@ -1,0 +1,380 @@
+$white: rgba(255, 255, 255, 1);
+$gray: rgba(242, 242, 242, 1);
+$lgray: rgba(204, 204, 204, 1);
+$mgray: rgba(165, 165, 165, 1);
+$hGray: rgba(128, 129, 128, 1);
+$black: rgba(0, 0, 0, 1);
+
+@mixin flexbox($direction) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: $direction;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #D9D9D9;
+    // background: var(--f-2-f-2-f-2, #F2F2F2);
+    overflow-x: hidden;
+
+    header {
+        position: sticky;
+        top: 0px;
+        z-index: 5;
+        background-color: $gray;
+        width: 100vw;
+        box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, 0.204);
+
+        nav.header {
+            ul {
+                padding-left: 0;
+                margin-bottom: 0;
+                @include flexbox(row);
+                list-style-type: none;
+                align-items: center;
+                justify-content: center;
+
+                li {
+                    margin: 0.25rem 2rem;
+
+                    img[alt="cambuyLogo"] {
+                        width: 128px;
+                    }
+
+                    form {
+                        input {
+                            border-radius: 10px 0px 0px 10px;
+                            border: 1px solid $gray;
+                            padding: 0.25rem 0.5rem;
+                            width: 30vw;
+                        }
+
+                        button[type="submit"] {
+                            border-radius: 0px 10px 10px 0px;
+                            border: none;
+                            background-color: $hGray;
+                            padding: 0.25rem;
+                            width: 108px;
+
+                            img {
+                                width: 20px;
+                            }
+                        }
+                    }
+
+                    label.switch {
+                        position: relative;
+                        display: inline-block;
+                        width: 60px;
+                        height: 34px;
+
+                        input {
+                            opacity: 0;
+                            width: 0;
+                            height: 0;
+
+                            &:checked+.slider {
+                                background-color: $black;
+                            }
+
+                            &:focus+.slider {
+                                box-shadow: 0 0 1px $black;
+                            }
+
+                            &:checked+.slider:before {
+                                -webkit-transform: translateX(26px);
+                                -ms-transform: translateX(26px);
+                                transform: translateX(26px);
+                            }
+                        }
+                    }
+
+                    span.slider {
+                        position: absolute;
+                        cursor: pointer;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background-color: #ccc;
+                        -webkit-transition: 0.4s;
+                        transition: 0.4s;
+
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            height: 26px;
+                            width: 26px;
+                            left: 4px;
+                            bottom: 4px;
+                            background-color: white;
+                            -webkit-transition: 0.4s;
+                            transition: 0.4s;
+                        }
+                    }
+
+                    span.slider.round {
+                        border-radius: 34px;
+                        padding-left: 36px;
+                        padding-top: 4px;
+
+                        &:before {
+                            border-radius: 50%;
+                        }
+                    }
+
+                    span.slider.moon {
+                        border-radius: 34px;
+                        padding-left: 12px;
+                        padding-top: 4px;
+                        color: $white;
+
+                        &:before {
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .sun {
+                        display: block;
+                    }
+
+                    .moon {
+                        display: none;
+                    }
+
+                    a {
+                        text-decoration: none;
+
+                        img {
+                            width: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+
+// 購物車內容
+.shop-car-bar {
+
+    // 購物車header
+    .shop-car-header-bar {
+        border-radius: 10px;
+        background-color: white;
+
+        .checkbox-product-bar {
+
+            // background-color: red;
+            // width: 500px;
+            p {
+                padding: 40px 10px;
+                font-size: 24px;
+                font-weight: 400;
+            }
+        }
+
+        .other-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 700px;
+
+            p {
+                padding: 10px;
+                font-size: 24px;
+                font-weight: 400;
+                width: 120px;
+                text-align: center;
+            }
+        }
+    }
+
+    .shop-car-item-bar {
+        border-radius: 10px;
+        background-color: white;
+
+        .checkbox-product-bar {
+
+            .prodName-bar {
+                display: flex;
+                // width: 50px;
+                p {
+                    padding: 40px 10px;
+                    font-size: 24px;
+                    font-weight: 400;
+                    width: 120px;
+                }
+
+            }
+
+            // 商品照片
+            .product-img {
+                width: 100px;
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 100px;
+                }
+            }
+
+
+            // 商品名稱
+            .product-name {
+                display: flex;
+                // background-color: pink;
+                justify-content: center;
+                align-items: center;
+
+                p {
+                    // margin-left: 100px;
+                    padding: 40px 10px;
+                    margin-top: 15px;
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        .other-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 700px;
+
+            p {
+                padding: 10px;
+                font-size: 24px;
+                font-weight: 400;
+                width: 120px;
+                text-align: center;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+// 配送資訊
+.member-address {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    // display: none;
+    span {
+        font-size: 24px;
+    }
+}
+
+// 付款資訊
+.Payment {
+    display: flex;
+    align-items: flex-start;
+
+    .Payment-header {
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+
+        p {
+            font-size: 26px;
+            padding: 1em .5em;
+            margin: 0;
+        }
+    }
+
+    .Payment-contanier {
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+
+        p {
+            font-size: 26px;
+            padding: 1em .5em;
+            margin: 0;
+        }
+
+        button {
+            width: 100%;
+            font-size: 26px;
+            padding: .5em;
+            border-radius: 10px;
+        }
+    }
+
+
+}
+
+
+
+
+select {
+    width: 100px;
+}
+
+
+// ATM的彈窗 
+.bank-body {
+    .bank-name {
+        h5 {
+            font-size: 28px;
+        }
+    }
+
+    h5 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .note {
+        p {
+            color: #8E8D8D;
+        }
+    }
+}
+
+
+
+.modal-body {
+    input {
+        border-radius: 10px;
+        padding: 0.5em;
+        // margin: 10px 0;
+    }
+
+    select {
+        border-radius: 10px;
+    }
+
+    .complete-adress {
+        input {
+            width: 100%;
+        }
+    }
+}

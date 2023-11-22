@@ -1,0 +1,10 @@
+<%-await include('./chageProduct.ejs') %>
+<section class="contral-product-page pagination">
+  <% for( let i = 1; i <= lastPage; i++ ) { if (i == 1) { %>
+  <button class="active changePage" data-brand="<%= getUserBrand %>">
+    <%=i%>
+  </button>
+  <% }else { %>
+  <button class="changePage" data-brand="<%= getUserBrand %>"><%=i%></button>
+  <% } } %>
+</section>

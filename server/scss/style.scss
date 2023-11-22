@@ -1,0 +1,33 @@
+@import 'mixin/fontSize';
+@import 'mixin/rwdMedia';
+
+@import 'variable';
+@import 'reset';
+@import 'form';
+@import 'pages';
+
+body {
+  background: {
+    color: var(--color_2);
+    image: linear-gradient(0deg, rgba(145, 75, 0, 0.05) 1px, transparent 0),
+      linear-gradient(90deg, rgba(145, 75, 0, 0.05) 1px, transparent 0),
+      linear-gradient(0deg, rgba(100, 50, 0, 0.05) 1px, transparent 0),
+      linear-gradient(90deg, rgba(100, 50, 0, 0.05) 1px, transparent 0),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.05) 1px, transparent 0),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+    size: 10px 10px, 10px 10px, 100px 100px, 100px 100px, 300px 300px, 300px 300px;
+  }
+  &:has(#mode:checked) {
+    background: {
+      image: linear-gradient(0deg, rgba(100, 128, 128, 0.05) 1px, transparent 0),
+        linear-gradient(90deg, rgba(100, 128, 128, 0.05) 1px, transparent 0),
+        linear-gradient(0deg, rgba(100, 200, 256, 0.05) 1px, transparent 0),
+        linear-gradient(90deg, rgba(100, 200, 256, 0.05) 1px, transparent 0),
+        linear-gradient(0deg, rgba(256, 256, 256, 0.05) 1px, transparent 0),
+        linear-gradient(90deg, rgba(256, 256, 256, 0.05) 1px, transparent 0);
+      size: 10px 10px, 10px 10px, 100px 100px, 100px 100px, 300px 300px, 300px 300px;
+    }
+  }
+}
+
+@import 'pages/member';

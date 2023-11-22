@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: normal;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: rgb(242, 242, 242);
+}
+body header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: rgb(242, 242, 242);
+  width: 100vw;
+  box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, 0.204);
+}
+body header nav.header ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+body header nav.header ul li {
+  margin: 0.25rem 2rem;
+}
+body header nav.header ul li img[alt=cambuyLogo] {
+  width: 128px;
+}
+body header nav.header ul li form input {
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid rgb(242, 242, 242);
+  padding: 0.25rem 0.5rem;
+  width: 30vw;
+}
+body header nav.header ul li form button[type=submit] {
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+  background-color: rgb(128, 129, 128);
+  padding: 0.25rem;
+  width: 108px;
+}
+body header nav.header ul li form button[type=submit] img {
+  width: 20px;
+}
+body header nav.header ul li label.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+body header nav.header ul li label.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+body header nav.header ul li label.switch input:checked + .slider {
+  background-color: rgb(0, 0, 0);
+}
+body header nav.header ul li label.switch input:focus + .slider {
+  box-shadow: 0 0 1px rgb(0, 0, 0);
+}
+body header nav.header ul li label.switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+body header nav.header ul li span.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+body header nav.header ul li span.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+body header nav.header ul li span.slider.round {
+  border-radius: 34px;
+  padding-left: 36px;
+  padding-top: 4px;
+}
+body header nav.header ul li span.slider.round:before {
+  border-radius: 50%;
+}
+body header nav.header ul li span.slider.moon {
+  border-radius: 34px;
+  padding-left: 12px;
+  padding-top: 4px;
+  color: rgb(255, 255, 255);
+}
+body header nav.header ul li span.slider.moon:before {
+  border-radius: 50%;
+}
+body header nav.header ul li .sun {
+  display: block;
+}
+body header nav.header ul li .moon {
+  display: none;
+}
+body header nav.header ul li a {
+  text-decoration: none;
+}
+body header nav.header ul li a img {
+  width: 24px;
+}
+body main aside {
+  background-color: rgb(255, 255, 255);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+}
+body main aside::-webkit-scrollbar {
+  display: none;
+}
+body main aside nav.navSide ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+  padding: 1rem;
+  padding-bottom: 6rem;
+}
+body main aside nav.navSide ul li {
+  text-align: start;
+  padding: 1rem;
+}
+body main aside nav.navSide ul li img {
+  width: 1.5rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+body main aside nav.navSide ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+body main section.info {
+  margin-top: 2rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  padding: 0;
+}
+body main section.info::-webkit-scrollbar {
+  display: none;
+}
+body main section.info form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 2rem;
+}
+body main section.info form select {
+  width: 10vw;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  padding: 0.25rem;
+}
+body main section.info form select:checked option {
+  border: none;
+  border-radius: 0 0 10px 10px;
+}
+body main section.info form span {
+  margin-left: 1rem;
+  padding: 0.25rem;
+}
+body main section.info form button {
+  margin-left: 1rem;
+  padding: 0.25rem;
+  border: none;
+  background-color: rgb(242, 242, 242);
+}
+body main section.info form label {
+  margin-left: 1rem;
+  padding: 0.25rem;
+}
+body main section.info form input {
+  margin-left: 1rem;
+  padding: 0.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgb(0, 0, 0);
+}
+body main section.info form input:focus {
+  border: none;
+  border-color: rgb(255, 255, 255);
+}
+body main section.info section.productBox div div.product {
+  width: 90%;
+  margin: 2rem;
+  border-radius: 10px;
+  padding-bottom: 1rem;
+  background-color: rgb(255, 255, 255);
+}
+body main section.info section.productBox div div.product:hover {
+  box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, 0.3);
+}
+body main section.info section.productBox div div.product img {
+  width: 100%;
+  height: 500px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+body main section.info section.productBox div div.product p {
+  font-size: 1.25rem;
+  margin: 1rem 0rem 0rem 1rem;
+}
+body main section.info section.productBox div div.product p:nth-of-type(2) {
+  margin: 0rem 0rem 2rem 1rem;
+}
+body main section.info section.productBox div div.product span {
+  margin-left: 1rem;
+}
+body main section.info section.productBox div div.product button {
+  margin-right: 1rem;
+  padding: 0.25rem;
+  border: none;
+  background-color: rgb(255, 255, 255);
+  float: right;
+}
+body main section.info section.productBox div div.product button img {
+  width: 20px;
+  height: 20px;
+}
+body main section.info section.productBox div div.product button img:hover {
+  transform: scale(1.5);
+}
+body main section.info section.contral-product-page {
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+body main section.info section.contral-product-page a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+body main section.info section.contral-product-page a.active {
+  background-color: rgb(128, 129, 128);
+  color: rgb(255, 255, 255);
+}
+body main section.info section.contral-product-page a:hover:not(.active) {
+  background-color: rgb(204, 204, 204);
+}
+body main section.info footer {
+  padding: 2rem 4rem;
+  background-color: rgb(128, 129, 128);
+  margin-bottom: 5rem;
+}
+body main section.info footer div.info-href {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+body main section.info footer div.info-href div.href {
+  padding-right: 4rem;
+}
+body main section.info footer div.info-href div.href h5 {
+  font-size: 1.25rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+}
+body main section.info footer div.info-href div.href ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+body main section.info footer div.info-href div.href ul li {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  padding-bottom: 0.25rem;
+}
+body main section.info footer div.info-href div.href ul li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+body main section.info footer canvas {
+  width: 100%;
+  height: 1px;
+  border: 1px solid rgb(255, 255, 255);
+  margin: 1rem 0rem;
+}
+body main section.info footer div.info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+body main section.info footer div.info ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+body main section.info footer div.info ul li {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  padding-bottom: 0.25rem;
+  padding-right: 0.5rem;
+}
+body main section.info footer div.info ul li a {
+  padding-right: 0.5rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+body main section.info footer div.info p {
+  flex-grow: 1;
+  text-align: end;
+  color: rgb(255, 255, 255);
+}
+body button.top-btn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 16px;
+  width: 4rem;
+  height: 4rem;
+}
+body button.top-btn:hover {
+  background-color: rgb(255, 255, 255);
+}

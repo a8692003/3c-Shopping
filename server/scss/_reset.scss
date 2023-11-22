@@ -1,0 +1,90 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color: var(--color_6);
+  font-size: font(2);
+  font-family: 'Noto Sans TC', sans-serif;
+}
+h1 {
+  @include font(9);
+}
+
+h2 {
+  @include font(7);
+}
+
+h3 {
+  @include font(6);
+}
+
+h4 {
+  @include font(5);
+}
+
+h5 {
+  @include font(4);
+}
+
+h6 {
+  @include font(3);
+}
+
+label,
+input,
+p {
+  @include font(3);
+}
+span {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+@include pad-width() {
+  h1 {
+    @include font(8);
+  }
+
+  h2 {
+    @include font(6);
+  }
+
+  h3 {
+    @include font(5);
+  }
+
+  h4 {
+    @include font(4);
+  }
+
+  h5 {
+    @include font(3);
+  }
+
+  h6 {
+    @include font(2);
+  }
+
+  p,
+  label,
+  input {
+    @include font(2);
+  }
+}
+
+a {
+  text-decoration: none;
+  @extend %roundAll;
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+  }
+}

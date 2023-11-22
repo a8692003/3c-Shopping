@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - 購物車</title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+    <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/shopCartPage/shop-car.css"
+    />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/universal/notification.css"
+    />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <%-await include('../header'); %>
+
+    <div class="shop-car-bar container">
+      <div class="row">
+        <!-- 購物車title -->
+        <div class="col-12 shop-car-title mt-5 mb-5 fw-bolder">
+          <h1>購物車</h1>
+        </div>
+
+        <!-- 購物車header -->
+        <div class="col-12 shop-car-header-bar d-flex justify-content-between">
+          <div class="row">
+            <div class="d-flex checkbox-product-bar">
+              <input class="checkall" type="checkbox" name="" id="" />
+              <p class="bg-body my-auto fw-bolder">商品</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="other-bar d-lg-flex d-none">
+              <p class="my-auto fw-bolder">單價</p>
+              <p class="my-auto fw-bolder">數量</p>
+              <p class="my-auto fw-bolder">統計</p>
+              <p class="my-auto fw-bolder">刪除</p>
+            </div>
+          </div>
+        </div>
+
+        <article class="col-12 mt-5">
+          <div class="row item-wrap"></div>
+
+          <div class="row">
+            <div class="col-3"></div>
+
+            <!-- 結算 -->
+            <div class="col-6 del-all mt-5">
+              <div class="row">
+                <div class="d-flex checkbox-ipt-bar">
+                  <input class="checkall" type="checkbox" name="" id="" />
+                  <a href="javascript:;">移除所選商品</a>
+                  <div class="toolbar-right">
+                    <div class="amount-sum">(<strong>0</strong>件商品)</div>
+                    <div class="price-sum">總計<strong>0</strong></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3"></div>
+          </div>
+        </article>
+
+        <!-- 付款運送方式 title -->
+        <div class="col-12 mt-5 fw-bolder">
+          <h1>付款運送方式</h1>
+        </div>
+
+        <!-- 付款運送方式 -->
+        <div class="delivery-bar col-12 mt-5 bg-body">
+          <!-- 運送方式 -->
+          <h2 class="mt-5 ms-5 fw-bolder">運送方式</h2>
+          <div class="mt-5 ms-5 mb-5 btn-bar">
+            <label class="delivery" for="delivery">
+              <input
+                type="radio"
+                id="delivery"
+                name="shipping"
+                data-bs-toggle="modal"
+                data-bs-target="#addressModal"
+              />
+              宅配
+            </label>
+          </div>
+          <hr />
+          <!-- 付款方式 -->
+          <h2 class="mt-5 ms-5 fw-bolder">付款方式</h2>
+          <div class="d-flex mb-5">
+            <!-- ATM轉帳 -->
+            <div class="mt-5 ms-5 btn-bar">
+              <label class="ATM" for="ATM">
+                <input
+                  type="radio"
+                  id="ATM"
+                  name="pay"
+                  value="0"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ATMModal"
+                />
+                ATM轉帳
+              </label>
+            </div>
+            <!-- 信用卡 -->
+            <div class="mt-5 ms-5 btn-bar">
+              <label class="credit-card" for="credit-card">
+                <input type="radio" id="credit-card" name="pay" value="1" />
+                信用卡</label
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- 配送資訊title -->
+        <div class="col-12 fw-bold">
+          <h1 class="mt-5 show-address-name"></h1>
+        </div>
+
+        <!-- 配送資訊 -->
+        <div class="col-12 member-address mt-5">
+          <div class="m-5 ms-5"><span class="show-name"></span></div>
+          <div class="m-5 ms-5"><span class="show-tel"></span></div>
+          <div class="m-5 ms-5"><span class="show-address"></span></div>
+        </div>
+
+        <!-- 備註title -->
+        <div class="col-12 mt-5 fw-bolder">
+          <h1>備註</h1>
+        </div>
+
+        <!-- 備註 & 立即下單 -->
+        <div class="col-12 mt-5">
+          <div class="row">
+            <!-- 備註 -->
+            <div class="note col-md-6 col-sm-12">
+              <textarea name="" id="" cols="30" rows="5"></textarea>
+            </div>
+
+            <!-- 立即下單 -->
+            <div class="send col-md-6 col-sm-12 mt-md-0 mt-sm-3">
+              <div class="row">
+                <div class="total-bar price-sum col-12">
+                  <p>商品總計：<strong>0</strong></p>
+                </div>
+                <div class="send-bar col-12">
+                  <button class="fw-bold" id="Order-btn">立即下單</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 未勾選商品直接下單的彈窗 -->
+    <div
+      class="modal fade"
+      id="not-checkProduct-Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body mt-3">
+            <p>請勾選要購買的商品</p>
+          </div>
+          <div class="modal-footer mt-5">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              了解
+            </button>
+            <!-- <button type="button" class="btn btn-primary my-btn"></button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 未勾選運送方式以及付款方式的彈窗 -->
+    <div
+      class="modal fade"
+      id="not-checkPay-Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body mt-3">
+            <p>請勾選運送方式以及付款方式</p>
+          </div>
+          <div class="modal-footer mt-5">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              了解
+            </button>
+            <!-- <button type="button" class="btn btn-primary my-btn"></button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 宅配的彈窗 -->
+    <div
+      class="modal fade"
+      id="addressModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bolder" id="exampleModalLabel">
+              收件人資訊
+            </h5>
+          </div>
+          <div class="modal-body mt-3">
+            <!-- 姓名 -->
+            <div class="name-ipt">
+              <input type="text" placeholder="姓名" id="username" />
+            </div>
+            <!-- 手機號碼 -->
+            <div class="tel-ipt mt-3">
+              <input
+                type="text"
+                placeholder="手機號碼"
+                id="tel"
+                pattern="^09[0-9]{8}$"
+              />
+            </div>
+            <div class="adress-detill d-flex justify-content-between mt-3">
+              <!-- 選擇縣市 -->
+              <select id="select-city">
+                <optgroup class="city" label="縣市" id="city"></optgroup>
+              </select>
+              <!-- 選擇鄉鎮市區 -->
+              <select id="select-Area">
+                <optgroup class="Area" label="鄉鎮市區" id="area"></optgroup>
+              </select>
+              <!-- 郵遞區號 -->
+              <div class="code-ipt">
+                <input
+                  type="text"
+                  placeholder="郵遞區號"
+                  id="PostalCode"
+                  parseInt="^\d{3}$|^\d{5}$"
+                />
+              </div>
+            </div>
+            <!-- 詳細地址 -->
+            <div class="complete-adress mt-3">
+              <input
+                type="text"
+                placeholder="請詳細填寫地址:路/巷/弄/號/樓"
+                id="address"
+              />
+            </div>
+          </div>
+          <div class="modal-footer mt-5">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              取消
+            </button>
+            <button type="button" class="btn btn-primary my-btn">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATM的彈窗 -->
+    <div
+      class="modal fade"
+      id="ATMModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">匯款資訊</h5>
+          </div>
+          <div class="modal-body bank-body mt-3">
+            <!-- 銀行名稱 -->
+            <div class="bank-name">
+              <h5>中國信託銀行</h5>
+            </div>
+            <!-- 銀行代碼 -->
+            <div class="bank-code mt-5">
+              <h5>銀行代碼</h5>
+              <p class="mt-1">822</p>
+            </div>
+            <!-- 銀行帳號 -->
+            <div class="bank-user mt-5">
+              <h5>銀行帳號</h5>
+              <p class="mt-1">152345678561</p>
+            </div>
+            <!-- 備註 -->
+            <div class="mt-5 note">
+              <p>請使用網路銀行或網路ATM將金額轉入此帳戶</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary bank-btn">了解</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%-await include('../footerWidth.ejs'); %>
+    <script src="/public/js/universal/header.js"></script>
+
+    <script>
+      //req herder select & herder select display block
+      $('input[name="search"]').on("keyup", function () {
+        //herder select display block
+        $("#search-result").css("display", "block");
+        //req herder select
+        $.ajax({
+          type: "get",
+          url: "/api/changeProduct/search",
+          data: {
+            search: $(this).val(),
+          },
+          success: async function (response) {
+            let result = ``;
+            response.forEach((prod) => {
+              result += `<li><a href="/commodity/${prod.prod_id}/${prod.spec_id}">${prod.prod_name}</a></li>`;
+            });
+
+            result == ""
+              ? (result = "<li><p>搜尋無結果</p></li>")
+              : (result = result);
+            $("#search-result>ul").html(result);
+          },
+        });
+      });
+      $("body").on("click", function () {
+        $("#search-result").css("display", "none");
+      });
+      // 購物車功能
+
+      // 因為一打開頁面, 下面就要計算件數跟總價
+      // 所以一開始就要呼叫一次函式
+      getSum();
+      function getSum() {
+        var count = 0; // 計算總件數
+        var money = 0; // 計算總價錢
+
+        $(".j-checkbox:checked").each(function () {
+          var i = parseInt(
+            $(this).parents(".shop-car-item-bar").find(".itxt").val()
+          );
+          var j = parseInt(
+            $(this).parents(".shop-car-item-bar").find(".price").html()
+          );
+          count += i;
+          money += i * j;
+          console.log(count, money);
+        });
+
+        $(".amount-sum strong").html(count);
+        $(".price-sum strong").text(money);
+      }
+
+      // 1.全選框
+      $(".checkall").on("change", function () {
+        $(".j-checkbox,.checkall").prop("checked", $(this).prop("checked"));
+        getSum();
+      });
+
+      // 2.複選框
+      $(".item-wrap").on("change", ".j-checkbox", function () {
+        getSum();
+        if ($(".j-checkbox:checked").length === $(".j-checkbox").length) {
+          $(".checkall").prop("checked", true);
+        } else {
+          $(".checkall").prop("checked", false);
+        }
+        getSum();
+      });
+
+      //3. +商品數量
+      $(".item-wrap").on("click", ".increment", function () {
+        // i = 商品數量
+        var i = $(this).siblings(".itxt").val();
+        i++;
+        // 點一次+就給itxt
+        $(this).siblings(".itxt").val(i);
+        // j = 商品單價
+        var j = $(this).parents(".num-bar").siblings(".price").html();
+        // 總計
+        $(this)
+          .parents(".num-bar")
+          .siblings(".total")
+          .html(i * j);
+        getSum();
+      });
+
+      //4. -商品數量
+      $(".item-wrap").on("click", ".decrement", function () {
+        var i = $(this).siblings(".itxt").val();
+        // console.log(i);
+        if (i == 0) {
+          return false;
+        }
+        i--;
+        $(this).siblings(".itxt").val(i);
+        var j = $(this).parents(".num-bar").siblings(".price").html();
+        $(this)
+          .parents(".num-bar")
+          .siblings(".total")
+          .html(i * j);
+        getSum();
+      });
+
+      // 刪除選到的商品 | 全選
+      $(".del-all a").on("click", function () {
+        // 選取所有已選中的複選框
+        var $selectedCheckboxes = $(".j-checkbox:checked");
+
+        $selectedCheckboxes.each(function () {
+          var $itemToRemove = $(this).parents(".shop-car-item-bar");
+          var prod_id = $(this).attr("id");
+          var spec_id = $itemToRemove.find(".product-name span").attr("id");
+          var user_id = $itemToRemove.attr("id");
+
+          $.ajax({
+            type: "get",
+            url: "/shopCart/delProd",
+            data: {
+              prod_id: prod_id,
+              spec_id: spec_id,
+              user_id: user_id,
+            },
+            success: function (res) {
+              // console.log("已成功刪除資料");
+              $itemToRemove.remove();
+              getSum();
+            },
+            error: function (err) {
+              // console.log("刪除失敗" + err);
+            },
+          });
+        });
+      });
+      getSum();
+      function getSum() {
+        var count = 0; // 計算總件數
+        var money = 0; // 計算總價錢
+
+        $(".j-checkbox:checked").each(function () {
+          var i = parseInt(
+            $(this).parents(".shop-car-item-bar").find(".itxt").val()
+          );
+          var j = parseInt(
+            $(this).parents(".shop-car-item-bar").find(".price").html()
+          );
+          count += i;
+          money += i * j;
+        });
+
+        $(".amount-sum strong").html(count);
+        $(".price-sum strong").text(money);
+      }
+      // 刪除
+      $(".item-wrap").on("click", ".del a", function () {
+        var prod_id = $(this)
+          .closest(".shop-car-item-bar")
+          .find(".j-checkbox")
+          .attr("id");
+        var spec_id = $(this)
+          .closest(".shop-car-item-bar")
+          .find(".product-name span")
+          .attr("id");
+        var user_id = $(this).closest(".shop-car-item-bar").attr("id");
+        var isChecked = $(this)
+          .parents(".shop-car-item-bar")
+          .find(".j-checkbox")
+          .prop("checked");
+
+        // console.log(prod_id);
+        // console.log(spec_id);
+        // console.log(user_id);
+
+        var $itemToRemove = $(this).closest(".shop-car-item-bar");
+        if (isChecked) {
+          $.ajax({
+            type: "get",
+            url: "/shopCart/delProd",
+            data: {
+              prod_id: prod_id,
+              spec_id: spec_id,
+              user_id: user_id,
+            },
+            success: function (res) {
+              // console.log("已成功刪除資料");
+              // $(this).parents(".shop-car-item-bar").remove();
+              $itemToRemove.remove();
+              getSum();
+            },
+            error: function (err) {
+              // console.log("刪除失敗" + err);
+            },
+          });
+        }
+      });
+      // 使用者加進購物車的商品
+      $(function () {
+        $.ajax({
+          type: "GET",
+          url: "/shopCart/getProd",
+          success: function (res) {
+            // console.log(res);
+            var itemsData = res[0];
+            var itemsHtml = "";
+            for (var i = 0; i < itemsData.length; i++) {
+              var item = itemsData[i];
+              itemsHtml += `
+                         <div class="col-12 shop-car-item-bar mt-3">
+                             <div class="row">
+                                 <div class="checkbox-product-bar col-12">
+                                     <!-- 複選框 -->
+                                     <div class="j-checkbox-bar">
+                                         <input class="j-checkbox" type="checkbox" id="${
+                                           item.prod_id
+                                         }">
+                                     </div>
+                                     <!-- 商品照片 -->
+                                     <div class="product-img">
+                                         <img src="./public/${
+                                           item.img_src
+                                         }" alt="">
+                                     </div>
+                                     <!-- 商品名稱 -->
+                                     <div class="product-name ">
+                                         <p class="ms-auto">${
+                                           item.prod_name
+                                         } <br>
+                                             <span id="${item.spec_id}">${
+                item.spec_name
+              }</span>
+                                         </p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="row">
+                                 <div class="other-bar d-none d-md-flex col-12">
+                                     <!-- 單價。 -->
+                                     
+                                     <p class="my-auto price">${item.price}</p>
+                                     <!-- 數量 -->
+                                     <p class="my-auto num-bar">
+                                         <button class="decrement">-</button>
+                                         <input class="itxt" type="text" value="1">
+                                         <button class="increment">+</button>
+                                     </p>
+                                     <!-- 總價 -->
+                                     <p class="my-auto total">${
+                                       item.price * 1
+                                     }</p>
+                                     <!-- 刪除 -->
+                                     <p class="my-auto del">
+                                         <a href="javascript:;">
+                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                 fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                 <path
+                                                     d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                                             </svg>
+                                         </a>
+                                     </p>
+                                 </div>
+                             </div>
+                         </div>
+                         `;
+            }
+            $(".item-wrap").html(itemsHtml);
+          },
+        });
+
+        // 獲取城市和區域數據
+        $.ajax({
+          type: "get",
+          url: "/public/json/address.json",
+          dataType: "json",
+          success: function (data) {
+            var filteredData = data.filter(
+              (item) => item.CityName !== "釣魚臺" && item.CityName !== "南海島"
+            );
+            var citySelect = $("#select-city"); // 縣市下拉選單
+            var areaSelect = $("#select-Area"); // 鄉鎮市區下拉選單
+
+            // 填充縣市選項
+            filteredData.forEach(function (item) {
+              var city = $(
+                `<option class="city-option">${item.CityName}</option>`
+              );
+              citySelect.append(city);
+            });
+
+            // 監聽城市選擇變化事件
+            citySelect.on("change", function () {
+              areaSelect.empty();
+
+              var selectedCityName = $(this).val();
+              var selectedCity = data.find(function (item) {
+                return item.CityName === selectedCityName;
+              });
+
+              if (selectedCity) {
+                fillAreaOptions(selectedCity.AreaList);
+              }
+            });
+
+            // 填充鄉鎮市區選項
+            function fillAreaOptions(areaList) {
+              areaList.forEach(function (areaItem) {
+                var area = $(`<option>${areaItem.AreaName}</option>`);
+                areaSelect.append(area);
+              });
+            }
+
+            // 使用者預先存的收件人資訊
+            $("#addressModal").on("show.bs.modal", function () {
+              $.ajax({
+                type: "GET",
+                url: "/shopCart/getUser",
+                success: function (userData) {
+                  var orderData = userData[0];
+                  $("#username").val(orderData.name);
+                  $("#tel").val(orderData.phone);
+
+                  // 使用 addressSplite 函数分割地址
+                  var addressInfo = addressSplite(orderData.address);
+
+                  // 设置城市和区域的值
+                  $("#select-city").val(addressInfo.city);
+                  $("#select-Area").val(addressInfo.town);
+                  // 触发城市选择框的 change 事件以更新区域选项
+                  $("#select-city").trigger("change");
+                  console.log($("#select-city").val(addressInfo.city));
+                  console.log($("#select-Area").val(addressInfo.town));
+                  console.log($("#address").val(addressInfo.remaining));
+                },
+                error: function () {
+                  console.error("失敗");
+                },
+              });
+            });
+          },
+          error: function () {
+            console.error("請求失敗");
+          },
+        });
+
+        // 函數：根據地址拆分城市和區域
+        function addressSplite(address) {
+          var result = { city: "", town: "", remaining: "" };
+
+          if (!address) {
+            return result;
+          }
+          // 使用正規表達式進行匹配
+          var regex = /^(.*?[縣市])(.*?[鄉鎮市區])(.*)$/;
+          var matches = address.match(regex);
+
+          if (matches && matches.length >= 4) {
+            result.city = matches[1].replace(/台/g, "臺");
+            result.town = matches[2];
+            result.remaining = matches[3];
+          }
+          // 在這裡設置鄉鎮市區的下拉選項
+          // $('#select-Area').val(result.town);
+          return result;
+        }
+
+        var selectedProduct = false; // 還沒選擇商品
+
+        // 複選商品
+        $(".item-wrap").on("click", ".j-checkbox", function () {
+          selectedProduct = $(".item-wrap .j-checkbox:checked").length > 0;
+        });
+
+        // 全選商品
+        $(".checkall").on("click", function () {
+          selectedProduct = $(".checkall:checked").length > 0;
+        });
+        // 檢查收件人資訊
+        function isUserInfoComplete() {
+          var recipient = $("#username").val();
+          var recipient_address = $("#address").val();
+          var recipient_phone = $("#tel").val();
+          return recipient && recipient_address && recipient_phone;
+        }
+
+        $("#Order-btn").on("click", function () {
+          if (!selectedProduct) {
+            $("#not-checkProduct-Modal").modal("show");
+            return;
+          }
+          // 检查是否选择了运送方式和付款方式
+          var selectedShipping = $("input[name='shipping']:checked").val();
+          var selectedPayment = $("input[name='pay']:checked").val();
+
+          if (!selectedShipping || !selectedPayment) {
+            // 如果未选择运送方式或付款方式，显示运送方式和付款方式不完整的提示
+            $("#not-checkPay-Modal").modal("show");
+            return;
+          }
+
+          if (selectedProduct && isUserInfoComplete()) {
+            // 收件人資訊
+            var recipient = $("#username").val();
+            // var recipient_address = $('#select-city option').val() + $('#select-Area option').val() + $('#address').val();
+            var recipient_address = $(".show-address").text();
+            var addressWithoutPrefix = recipient_address.replace(/^地址：/, "");
+            var recipient_phone = $("#tel").val();
+            // 付款方式
+            var selectedPayMethod = $("input[name='pay']:checked").val();
+
+            // 傳送收件人資訊
+            $.ajax({
+              type: "GET",
+              url: "/shopCart/getUser",
+              success: function (data) {
+                var orderData = data[0];
+                var user_id = orderData.user_id;
+
+                // 傳送收件人資訊
+                $.ajax({
+                  type: "POST",
+                  url: "/shopCart/postUserAddress",
+                  data: {
+                    recipient: recipient,
+                    recipient_address: addressWithoutPrefix,
+                    recipient_phone: recipient_phone,
+                    user_id: user_id,
+                    pay: selectedPayMethod,
+                  },
+                  success: function (response) {
+                    // console.log("地址送出成功");
+                    var x = response.insertId;
+
+                    $(".item-wrap .j-checkbox:checked").each(function () {
+                      var selectedCheckbox = $(this);
+                      var prod_id = selectedCheckbox.attr("id");
+                      var spec_id = selectedCheckbox
+                        .parent(".j-checkbox-bar")
+                        .siblings(".product-name")
+                        .find("span")
+                        .attr("id");
+                      var price = parseInt(
+                        selectedCheckbox
+                          .parents(".row")
+                          .siblings(".row")
+                          .find(".total")
+                          .text()
+                      );
+                      var count = parseInt(
+                        selectedCheckbox
+                          .parents(".row")
+                          .siblings(".row")
+                          .find(".num-bar")
+                          .find(".itxt")
+                          .val()
+                      );
+
+                      // 傳送商品
+                      $.ajax({
+                        type: "POST",
+                        url: "/shopCart/postorder_product",
+                        data: {
+                          prod_id: prod_id,
+                          spec_id: spec_id,
+                          price: price,
+                          count: count,
+                          order_id: x,
+                        },
+                        success: function (response) {
+                          // console.log("商品送出成功", response);
+                          // console.log("Price:", price);
+                          window.location.href = "/shopCart/orderPage";
+                        },
+                        error: function (xhr, textStatus, errorThrown) {
+                          console.error(
+                            "商品送出失敗",
+                            textStatus,
+                            errorThrown
+                          );
+                        },
+                      });
+                    });
+                  },
+                });
+              },
+            });
+          }
+        });
+        // 收件人資訊
+        $(".my-btn").on("click", function () {
+          //姓名
+          var name = $(".name-ipt input").val();
+          //手機號碼
+          var tel = $(".tel-ipt input").val();
+          //選擇縣市
+          var city = $("#select-city option:selected").text();
+          //選擇鄉鎮市區
+          var area = $("#select-Area option:selected").text();
+          //詳細地址
+          var address = $(".complete-adress input").val();
+          //郵遞區號
+          var code = $(".code-ipt input").val();
+
+          // 手機號碼和郵遞區號的正則表達式
+          var telRegex = /^09[0-9]{8}$/;
+          var codeRegex = /^\d{3}$|^\d{5}$/;
+
+          // 驗證手機號碼
+          if (!telRegex.test(tel)) {
+            alert("請輸入有效的手機號碼格式(10碼)");
+            return; // 如果驗證不通過，停止執行
+          }
+
+          // 驗證郵遞區號
+          if (code !== "" && !codeRegex.test(code)) {
+            alert("請輸入有效的郵遞區號格式(3碼或5碼)");
+            return; // 如果驗證不通過，停止執行
+          }
+
+          $(".show-address-name").text("配送資訊");
+          $(".member-address .show-name").text(`姓名：${name}`);
+          $(".member-address .show-tel").text(`手機號碼：${tel}`);
+          $(".member-address .show-address").text(
+            `地址：${city}${area}${address}${code}`
+          );
+          $("#addressModal").modal("hide");
+          $(".member-address").css("display", "block");
+        });
+
+        //ATM彈窗
+        $(".bank-btn").on("click", function () {
+          $("#ATMModal").modal("hide");
+        });
+      });
+    </script>
+  </body>
+</html>

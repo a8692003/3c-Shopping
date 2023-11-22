@@ -1,0 +1,62 @@
+@charset "UTF-8";
+#mode + label {
+  position: relative;
+  display: block;
+  width: 75px;
+  height: 35px;
+  padding: 0;
+  margin: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 2px;
+  border-radius: 35px;
+  background-color: var(--color_5);
+  transition: 0.2s;
+}
+#mode + label > span {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  margin: 0;
+  border-radius: 35px;
+  background-color: var(--color_1);
+  transition: 0.2s;
+}
+#mode + label:before {
+  content: "☽";
+  left: 5px;
+  opacity: 0;
+}
+#mode + label:after {
+  content: "☼";
+  right: 5px;
+  opacity: 1;
+}
+#mode + label:after, #mode + label::before {
+  position: absolute;
+  top: 0;
+  width: 1em;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: none;
+  background: none;
+  transform: none;
+  transition: none;
+}
+#mode:checked + label:before {
+  opacity: 1;
+}
+#mode:checked + label:after {
+  opacity: 0;
+}
+#mode:checked + label > span {
+  left: 40px;
+}/*# sourceMappingURL=darkmode.css.map */

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/address.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    
+    <main>
+      <section class="member container container-L">
+        <%- await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>會員資料</h5>
+            <span>請填寫確實資料，避免影響資料核對</span>
+          </div>
+        </div>
+        <div class="content">
+          <form id="formData" class="lock" action="" method="post" enctype="multipart/form-data">
+            <div class="box photoFrame">
+              <input type="file" name="photo" id="iptPhoto" accept="image/*" />
+              <label for="iptPhoto"><img<%if(photo){%> src="/public<%=photo %>"<%}%> alt="" />更新頭像</label>
+            </div>
+            <div class="spacing box">
+              <label for="iptName">姓名</label>
+              <input
+                type="text"
+                name="name"
+                id="iptName"
+                placeholder="請輸入您的姓名"
+                value="<%= name%>"
+                disabled
+                required
+              />
+              <p id="memberId"><%= user_id%>&nbsp;<%= verified == 0 ? '未驗證' : '已驗證' %></p>
+            </div>
+            <div class="spacing box">
+              <label for="iptPhone">手機</label>
+              <input
+                type="text"
+                class="num"
+                name="phone"
+                id="iptPhone"
+                placeholder="請輸入您的電話號碼"
+                value="<%= phone%>"
+                disabled
+                required
+              />
+            </div>
+            <div class="box">
+              <label for="iptYear">生日日期</label>
+              <div>
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="year"
+                  id="iptYear"
+                  placeholder="YYYY"
+                  value="<%= year%>"
+                  required
+                />
+                <label for="iptYear">年</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="month"
+                  id="iptMonth"
+                  placeholder="MM"
+                  value="<%= month%>"
+                  required
+                />
+                <label for="iptMonth">月</label>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="day"
+                  id="iptDay"
+                  placeholder="DD"
+                  value="<%= day%>"
+                  required
+                />
+                <label for="iptDay">日</label>
+                </div>
+              </div>
+            <div class="spacing box">
+              <label for="">地址</label>
+              <select name="address_city" id="address_city" city="<%=city%>" required>
+                <option value="" disabled hidden selected>縣 / 市</option>
+              </select>
+              <select name="address_area" id="address_area" town="<%=town%>" required>
+                <option value="" disabled hidden selected>鄉鎮市區</option>
+              </select>
+              <input
+                type="text"
+                class="input-L"
+                name="address"
+                id="iptAddress"
+                placeholder="請輸入您的聯絡地址"
+                value="<%= remaining%>"
+                required
+              />
+            </div>
+            <div class="box">
+              <label for="iptMail">電子郵件</label>
+              <input
+                type="email"
+                class="input-L"
+                name="mail"
+                id="iptMail"
+                placeholder="請輸入您的電子郵件"
+                value="<%= email%>"
+                required
+              />
+            </div>
+            <!-- <div>
+              <input type="checkbox" name="terms" id="terms" checked />
+              <label for="terms">我願意接收電子訊息 </label>
+            </div> -->
+            <div class="submit" id="formEdit">
+              <input type="button" value="修 改" />
+            </div>
+            <div class="submit" id="formSave" style="display: none">
+              <input type="submit" value="儲 存" />
+            </div>
+          </form>
+          <div>
+            <h3>第三方綁定</h3>
+          </div>
+          <div>
+            <h4>GOOGLE</h4>
+          </div>
+          <div>
+            <% if(google_auth_id == null){%>
+            <a href="/auth/google">
+              <input type="button" class="button" value="綁定 GOOGLE" />
+            </a>
+            <% }else{%>
+            <input type="button" class="button" value="解除 GOOGLE" />
+            <%}%>
+          </div>
+          <div>
+            <h4>FACEBOOK</h4>
+          </div>
+          <div>
+            <% if(facebook_auth_id == null){%>
+            <a href="/auth/facebook">
+              <input type="button" class="button" value="綁定 FACEBOOK" />
+            </a>
+            <% }else{%>
+            <input type="button" class="button" value="解除 FACEBOOK" />
+            <%}%>
+          </div>
+
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>
+

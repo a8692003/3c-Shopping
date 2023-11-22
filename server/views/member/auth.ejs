@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <!-- <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script> -->
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%- await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>第三方綁定</h5>
+            <span></span>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <h4>GOOGLE</h4>
+          </div>
+          <div>
+            <% if(google_auth_id == null){%>
+            <a href="/auth/google">
+              <input type="button" class="button" value="綁定 GOOGLE" />
+            </a>
+            <% }else{%>
+            <input type="button" class="button" value="解除 GOOGLE" />
+            <%}%>
+          </div>
+          <div>
+            <h4>FACEBOOK</h4>
+          </div>
+          <div>
+            <% if(facebook_auth_id == null){%>
+            <a href="/auth/facebook">
+              <input type="button" class="button" value="綁定 FACEBOOK" />
+            </a>
+            <% }else{%>
+            <input type="button" class="button" value="解除 FACEBOOK" />
+            <%}%>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - 訂單確認</title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="/public/stylesheets/shopCartPage/order.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+    <link
+      rel="stylesheet"
+      href="/public/stylesheets/universal/notification.css"
+    />
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <%-await include('../header'); %>
+
+    <div class="shop-car-bar container">
+      <div class="row">
+        <!-- 購物車title -->
+        <div class="col-12 shop-car-title mt-5 mb-5 fw-bolder">
+          <h1>訂單資訊</h1>
+        </div>
+
+        <!-- 購物車header -->
+        <div class="col-12 shop-car-header-bar d-flex justify-content-between">
+          <div class="row">
+            <div class="d-flex justify-content-around checkbox-product-bar">
+              <p class="my-auto fw-bolder">訂單狀態</p>
+              <p class="my-auto fw-bolder ms-5">商品</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="other-bar d-lg-flex d-none">
+              <p class="my-auto fw-bolder">單價</p>
+              <p class="my-auto fw-bolder">數量</p>
+              <p class="my-auto fw-bolder">統計</p>
+            </div>
+          </div>
+        </div>
+
+        <article class="col-12 mt-5">
+          <div class="row item-bar">
+            <!-- 購物車item -->
+            <!-- <div class="col-12 shop-car-item-bar d-flex justify-content-between ">
+                        <div class="row">
+                            <div class="d-flex justify-content-around checkbox-product-bar ">
+                                <p class="my-auto">訂單完成</p>
+                                <div class="product-img ms-5">
+                                    <img src="/public/images/橫版logo.png" alt="">
+                                </div>
+                                <div class="product-name">
+                                    <p class="my-auto">商品名稱</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="other-bar d-lg-flex d-none">
+                                <p class="my-auto">20000</p>
+                                <p class="my-auto">1</p>
+                                <p class="my-auto">20000</p>
+                            </div>
+                        </div>
+                    </div> -->
+          </div>
+        </article>
+
+        <!-- 配送資訊title & 付款資訊title -->
+        <div class="col-12">
+          <div class="row">
+            <!-- 配送資訊title -->
+            <div class="col-6 mt-5 fw-bolder">
+              <h1>配送資訊</h1>
+            </div>
+            <!-- 付款資訊title -->
+            <div class="col-6 mt-5 fw-bolder">
+              <h1>付款資訊</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- 配送資訊 & 付款資訊 -->
+        <div class="col-12">
+          <div class="row gx-5">
+            <!-- 配送資訊 -->
+            <div class="col-6 member-address mt-5">
+              <div class="m-3 ms-3">
+                <span class="show-name" id="delivery_name">姓名：</span>
+              </div>
+              <div class="m-3 ms-3">
+                <span class="show-tel" id="delivery_tel">手機號碼：</span>
+              </div>
+              <div class="m-3 ms-3">
+                <span class="show-address" id="delivery_address">地址：</span>
+              </div>
+            </div>
+            <!-- 付款資訊 -->
+            <div class="col-6 Payment mt-5">
+              <div class="row">
+                <!-- 付款資訊header -->
+                <div class="col-12 Payment-header">
+                  <div class="row">
+                    <div class="col-4">
+                      <p>付款狀態</p>
+                    </div>
+                    <div class="col-4">
+                      <p>付款方式</p>
+                    </div>
+                    <div class="col-4"></div>
+                  </div>
+                </div>
+
+                <!-- 付款資訊contaniner -->
+                <div class="col-12 Payment-contanier mt-5 ATM-bar">
+                  <div class="row">
+                    <div class="col-4">
+                      <p>未付款</p>
+                    </div>
+                    <div class="col-4">
+                      <p id="paymentMethod">ATM轉帳</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                      <button
+                        id="paymentButton"
+                        name="pay"
+                        data-bs-toggle="modal"
+                        data-bs-target="#ATMModal"
+                      >
+                        轉帳資訊
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 付款資訊contaniner -->
+                <div class="col-12 Payment-contanier mt-5 card-bar">
+                  <div class="row">
+                    <div class="col-4 d-flex align-items-center">
+                      <p class="pay-state">未付款</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                      <p id="paymentMethod">信用卡</p>
+                    </div>
+                    <div class="col-4 d-flex align-items-center">
+                      <button
+                        id="paymentButton"
+                        name="pay"
+                        data-bs-toggle="modal"
+                        data-bs-target="#cardModal"
+                      >
+                        去付款
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 信用卡的彈窗 -->
+    <div
+      class="modal fade"
+      id="cardModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header justify-content-start">
+            <i
+              class="fa fa-cc-visa me-3"
+              style="font-size: 35px; color: rgb(78, 92, 201)"
+            ></i>
+            <h5 class="modal-title" id="exampleModalLabel">新增信用卡</h5>
+          </div>
+          <div class="modal-body bank-body mt-3">
+            <p>卡片詳情</p>
+            <!-- 信用卡號碼 -->
+            <div class="bank-name">
+              <input
+                type="text"
+                placeholder="信用卡號碼"
+                class="w-100"
+                id="card_num"
+              />
+            </div>
+            <!-- 卡片到期日 安全驗證碼 -->
+            <div class="bank-code mt-3 d-flex justify-content-between">
+              <input
+                type="text"
+                placeholder="卡片到期日 MM/YY"
+                class="w-50"
+                id="expiry_date"
+              />
+              <input type="text" placeholder="安全驗證碼" id="security_code" />
+            </div>
+            <!-- 持卡者姓名 -->
+            <div class="bank-user mt-3">
+              <input
+                type="text"
+                placeholder="持卡者姓名"
+                class="w-100"
+                id="name"
+              />
+            </div>
+          </div>
+          <div class="modal-body bank-body mt-3">
+            <p>發票地址</p>
+            <!-- 地址 -->
+            <div class="bank-name mt-3">
+              <input
+                type="text"
+                placeholder="地址"
+                class="w-100"
+                id="address"
+              />
+            </div>
+            <!-- 郵遞區號 -->
+            <div class="bank-code mt-3">
+              <input type="text" placeholder="郵遞區號" class="w-100" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              取消
+            </button>
+            <button type="button" class="btn btn-primary bank-btn">確定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATM的彈窗 -->
+    <div
+      class="modal fade"
+      id="ATMModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">匯款資訊</h5>
+          </div>
+          <div class="modal-body bank-body mt-3">
+            <!-- 銀行名稱 -->
+            <div class="bank-name">
+              <h5>中國信託銀行</h5>
+            </div>
+            <!-- 銀行代碼 -->
+            <div class="bank-code mt-5">
+              <h5>銀行代碼</h5>
+              <p class="mt-1">822</p>
+            </div>
+            <!-- 銀行帳號 -->
+            <div class="bank-user mt-5">
+              <h5>銀行帳號</h5>
+              <p class="mt-1">152345678561</p>
+            </div>
+            <!-- 備註 -->
+            <div class="mt-5 note">
+              <p>請使用網路銀行或網路ATM將金額轉入此帳戶</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary bank-btn">了解</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/public/js/universal/header.js"></script>
+    <script>
+      //req herder select & herder select display block
+      $('input[name="search"]').on("keyup", function () {
+        //herder select display block
+        $("#search-result").css("display", "block");
+        //req herder select
+        $.ajax({
+          type: "get",
+          url: "/api/changeProduct/search",
+          data: {
+            search: $(this).val(),
+          },
+          success: async function (response) {
+            let result = ``;
+            response.forEach((prod) => {
+              result += `<li><a href="/commodity/${prod.prod_id}/${prod.spec_id}">${prod.prod_name}</a></li>`;
+            });
+
+            result == ""
+              ? (result = "<li><p>搜尋無結果</p></li>")
+              : (result = result);
+            $("#search-result>ul").html(result);
+          },
+        });
+      });
+      $("body").on("click", function () {
+        $("#search-result").css("display", "none");
+      });
+
+      var order_id; // 創建一個變數來保存order_id
+
+      // 購物車功能
+      $(function () {
+        // 因為一打開頁面, 下面就要計算件數跟總價
+        // 所以一開始就要呼叫一次函式
+        // getSum();
+        function getSum() {
+          var count = 0; // 計算總件數
+          var money = 0; // 計算總價錢
+
+          // 5-1.先取得三個件數文字框
+          // 注意要使用each循環 因為是要分別對分別是三個商品進行操作
+          // 要讓使用者能夠分別對不同的商品進行操作
+          $(".itxt").each(function (index, ele) {
+            // 把 件數文字框$(ele) 裡的 值val() 加到count
+            count += parseInt($(ele).val());
+            // console.log(ele);
+          });
+          // 再取得 總件數.amount-sum 的文字em , 把它替換成count
+          $(".amount-sum em").html(count);
+
+          // 5-3.取得商品價格
+          $(".total").each(function (index, ele) {
+            // 把 商品單價$(ele) 裡的 文字text() 加到money
+            money += parseInt($(ele).text());
+          });
+          // 再取得 總價.price-sum 的文字em , 把它替換成money
+          $(".price-sum em").text(money);
+        }
+      });
+
+      // 1.全選框
+      // 全部選擇功能
+      $(".checkall").on("change", function () {
+        $(".j-checkbox,.checkall").prop("checked", $(this).prop("checked"));
+      });
+
+      // 2.複選框
+      $(".j-checkbox").on("change", function () {
+        if ($(".j-checkbox:checked").length === $(".j-checkbox").length) {
+          $(".checkall").prop("checked", true);
+        } else {
+          $(".checkall").prop("checked", false);
+        }
+      });
+
+      //3. +商品數量
+      $(".increment").on("click", function () {
+        // i = 商品數量
+        var i = $(this).siblings(".itxt").val();
+        i++;
+        // 點一次+就給itxt
+        $(this).siblings(".itxt").val(i);
+        // j = 商品單價
+        var j = $(this).parents(".num-bar").siblings(".price").html();
+        // 總計
+        $(this)
+          .parents(".num-bar")
+          .siblings(".total")
+          .html(i * j);
+        getSum();
+      });
+
+      //4. -商品數量
+      $(".decrement").on("click", function () {
+        var i = $(this).siblings(".itxt").val();
+
+        if (i == 0) {
+          return false;
+        }
+        i--;
+        $(this).siblings(".itxt").val(i);
+        var j = $(this).parents(".num-bar").siblings(".price").html();
+        $(this)
+          .parents(".num-bar")
+          .siblings(".total")
+          .html(i * j);
+        getSum();
+      });
+
+      // 刪除
+      $(".del a").click(function () {
+        $(this).parents(".shop-car-item-bar").remove();
+        $(".j-checkbox:checked").parents(".shop-car-item-bar").remove();
+        getSum();
+      });
+
+      // 刪除選到的商品
+      $(".del-all a").click(function () {
+        // 刪除的是小複選框被選中的商品
+        // 取得小複選框j-checkbox 的選中狀態checked
+        $(".j-checkbox:checked").parents(".shop-car-item-bar").remove();
+        // 當我刪除商品之後要重新計算件數跟總金額
+        getSum();
+      });
+
+      // 取得付款方式跟配送資訊
+      $(function () {
+        // 配送資訊
+        $.ajax({
+          type: "POST",
+          url: "/shopCart/getOrderList",
+          success: function (data) {
+            // console.log(data);
+
+            var delivery = data[0][data[0].length - 1];
+            var payMethod = delivery.pay_method;
+
+            $("#delivery_name").text(`姓名：${delivery.recipient}`);
+            $("#delivery_tel").text(`手機號碼：${delivery.recipient_phone}`);
+            $("#delivery_address").text(`地址：${delivery.recipient_address}`);
+
+            // 根据 pay_method 值来显示相应的付款信息容器
+            if (payMethod === 0) {
+              $(".ATM-bar").show();
+              $(".card-bar").hide();
+            } else if (payMethod === 1) {
+              $(".ATM-bar").hide();
+              $(".card-bar").show();
+            }
+          },
+        });
+      });
+      // 取得購買商品
+      $(function () {
+        $.ajax({
+          type: "POST",
+          url: "/shopCart/getOrderProduct",
+          success: function (res) {
+            // console.log(res);
+            // console.log('---------------');
+            var itemsData = res[0];
+            var itemsHtml = "";
+            for (var i = 0; i < itemsData.length; i++) {
+              // console.log(res[0][0].order_id);
+              var item = itemsData[i];
+              // 將order_id保存到變數中
+              order_id = item.order_id;
+              itemsHtml += `
+                        <div class="col-12 shop-car-item-bar d-flex justify-content-between mt-3">
+                        <div class="row">
+                            <div class="d-flex justify-content-around checkbox-product-bar ">
+                                <div class="prodName-bar ">
+                                    <p class="my-auto">訂單完成</p>
+                                </div>
+                                <div class="product-img ms-5">
+                                    <img src="/public/${item.img_src}" alt="">
+                                </div>
+                                <div class="product-name">
+                                    <p id="${item.order_id}" class="my-auto">${
+                item.prod_name
+              } <br> <span>${item.spec_name}</span> </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="other-bar d-lg-flex d-none">
+                                <p class="my-auto">${item.price.toLocaleString()}</p>
+                                <p class="my-auto">${item.count}</p>
+                                <p class="my-auto">${item.amount.toLocaleString()}</p>
+                            </div>
+                        </div>
+                    </div>
+                        `;
+            }
+            $(".item-bar").html(itemsHtml);
+          },
+        });
+      });
+
+      // 信用卡資訊
+      $("#cardModal").on("show.bs.modal", function () {
+        $.ajax({
+          type: "GET",
+          url: "/shopCart/getUserCards",
+          success: function (res) {
+            console.log(res);
+            var orderData = res[0][0];
+
+            $("#name").val(orderData.name);
+            $("#card_num").val(orderData.card_num);
+            $("#expiry_date").val(orderData.expiry_date);
+            $("#security_code").val(orderData.security_code);
+          },
+        });
+        $.ajax({
+          type: "GET",
+          url: "/shopCart/getUser",
+          success: function (res) {
+            console.log(res);
+            $("#address").val(res[0].address);
+          },
+        });
+      });
+
+      // 點擊刷卡
+      $(".bank-btn").on("click", function () {
+        $.ajax({
+          type: "post",
+          url: "/shopCart/postState",
+          data: {
+            state: 2,
+            pay: 1,
+            order_id: order_id,
+          },
+          success: function (res) {
+            console.log(res);
+          },
+        });
+      });
+
+      //ATM彈窗
+      $(".bank-btn").on("click", function () {
+        $("#ATMModal").modal("hide");
+      });
+
+      //card彈窗
+      $(".bank-btn").on("click", function () {
+        $("#cardModal").modal("hide");
+        $(".pay-state").text("已付款");
+      });
+    </script>
+  </body>
+</html>

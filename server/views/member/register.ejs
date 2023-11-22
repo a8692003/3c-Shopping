@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-S">
+        <div class="subtitle">
+          <div class="group">
+            <a href="/login"><h5>登入</h5></a>
+            <a href="/register" class="active"><h5>註冊</h5></a>
+          </div>
+        </div>
+        <div class="content">
+          <form id="formRegister" action="" method="post">
+            <div class="spacing box">
+              <label>我是</label>
+              <div>
+                <input type="radio" name="right" id="seller" value="1" />
+                <label for="seller">賣家</label>
+                <input type="radio" name="right" id="buyer" value="2" checked />
+                <label for="buyer">買家</label>
+              </div>
+            </div>
+            <div class="box">
+              <label for="iptName">設定姓名</label>
+              <input type="text" name="name" id="iptName" placeholder="請輸入您的姓名" required />
+            </div>
+            <div class="box">
+              <label for="iptAcc">設定帳號</label>
+              <input type="text" name="acc" id="iptAcc" placeholder="請輸入您的帳號" required />
+            </div>
+            <div class="box">
+              <label for="iptPwd">設定密碼</label>
+              <input type="password" name="pwd" id="iptPwd" placeholder="請輸入您的密碼" required />
+            </div>
+            <div class="box">
+              <label for="iptPwdCheck">確認密碼</label>
+              <input
+                type="password"
+                name="pwdCheck"
+                id="iptPwdCheck"
+                placeholder="再次輸入密碼"
+                required
+              />
+            </div>
+            <div class="box">
+              <label for="iptYear">生日日期</label>
+              <div>
+                <input
+                  type="text"
+                  class="num input-S"
+                  name="year"
+                  id="iptYear"
+                  placeholder="<%= new Date().getFullYear() %>"
+                  required
+                />
+                <label for="iptYear">年</label>
+
+                <input
+                  type="text"
+                  class="num input-S"
+                  name="month"
+                  id="iptMonth"
+                  placeholder="<%= new Date().getMonth()+1 %>"
+                  required
+                />
+                <label for="iptYear">月</label>
+
+                <input
+                  type="text"
+                  class="num input-S"
+                  name="day"
+                  id="iptDay"
+                  placeholder="<%= new Date().getDate() %>"
+                  required
+                />
+                <label for="iptDay">日</label>
+              </div>
+            </div>
+            <div class="box">
+              <label for="iptPhone">手機號碼</label>
+              <input
+                type="text"
+                class="num"
+                name="phone"
+                id="iptPhone"
+                placeholder="請輸入您的電話"
+                required
+              />
+            </div>
+            <div class="box">
+              <label for="iptMail">電子信箱</label>
+              <input
+                type="email"
+                class="input-L"
+                name="mail"
+                id="iptMail"
+                placeholder="請輸入您的電子信箱"
+                required
+              />
+            </div>
+            <div class="box">
+              <input type="checkbox" name="terms" id="terms" />
+              <label for="terms"
+                >我同意客戶
+                <a href="#" target="_blank">隱私權政策</a>
+                與
+                <a href="#" target="_blank">客戶服務條款</a>
+              </label>
+            </div>
+            <div class="submit">
+              <input type="submit" value="註 冊" />
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

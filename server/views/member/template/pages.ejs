@@ -1,0 +1,30 @@
+<div class="pages">
+  <% if( max_pages<=7){%> <%for(var i = 0 ; i < max_pages; i++){%>
+  <a href="./<%=i+1%>" class="page" style="<%= page==i+1?'background-color: var(--color_6);': '' %>"
+    ><%=i+1%></a
+  >
+  <%}%> <%}else{%> <% if(page <= 1+Math.floor(7/2)){%> <%for(var i = 1-1 ; i < 1+Math.floor(7/2)+1;
+  i++){%>
+  <a href="./<%=i+1%>" class="page" style="<%= page==i+1?'background-color: var(--color_6);': '' %>"
+    ><%=i+1%></a
+  >
+  <%}%>
+  <div class="page">...</div>
+  <a href="./<%=max_pages%>" class="page"><%=max_pages%></a>
+  <% }else if(page >= max_pages-Math.floor(7/2)) {%>
+  <a href="./1" class="page">1</a>
+  <div class="page">...</div>
+  <%for(var i = max_pages-Math.floor(7/2)-1-1 ; i < max_pages; i++){%>
+  <a href="./<%=i+1%>" class="page" style="<%= page==i+1?'background-color: var(--color_6);': '' %>"
+    ><%=i+1%></a
+  >
+  <%}%> <%}else{%>
+  <a href="./1" class="page">1</a>
+  <div class="page">...</div>
+  <a href="./<%=page-1%>" class="page"><%=page-1%></a>
+  <a href="./<%=page%>" class="page" style="background-color: var(--color_6)"><%=page%></a>
+  <a href="./<%=parseInt(page)+1%>" class="page"><%=parseInt(page)+1%></a>
+  <div class="page">...</div>
+  <a href="./<%=max_pages%>" class="page"><%=max_pages%></a>
+  <%}%> <%}%>
+</div>

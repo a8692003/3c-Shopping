@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%- await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>訂單資料</h5>
+            <span>實際狀況與顯示若有誤差，請耐心等候資料更新</span>
+          </div>
+        </div>
+        <div class="content">
+          <div class="table">
+            <table>
+              <thead>
+                <tr class="underLine">
+                  <th>訂單編號</th>
+                  <th>訂單時間</th>
+                  <th>付款</th>
+                  <th>狀態</th>
+                </tr>
+                <tr>
+                  <td><%=orders[0].order_id %></td>
+                  <td><%-orders[0].order_date %></td>
+                  <td>
+                    <%=orders[0].pay_method_nmae %>
+                    <br />
+
+                    <span class="<%= orders[0].pay===0 ?'alert':''%>">
+                      ( <%=orders[0].pay_name %> )
+                    </span>
+                  </td>
+                  <td>
+                    <span class="<%= orders[0].state===0 ?'alert':''%>">
+                      <%=orders[0].state_name %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="underLine">
+                  <th>收件人</th>
+                  <td><%=orders[0].recipient %></td>
+                  <th>收件地址</th>
+                  <td><%-orders[0].recipient_address %></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4">
+                    <table>
+                      <% for(data of orders[0].order_detail) {%>
+                      <tr>
+                        <td colspan="1" class="imgFrame">
+                          <img
+                            src="/public<%=data.img_src%>"
+                            alt=""
+                            srcset=""
+                            style="width: 100%"
+                          />
+                        </td>
+                        <td colspan="3"><%= data.prod_name %></td>
+                        <td><%= data.spec_name %></td>
+                      </tr>
+                      <tr class="underLine">
+                        <td colspan="2"><%= data.price %></td>
+                        <td>X <%= data.count %></td>
+                        <td colspan="2"><%= data.subtotal %></td>
+                      </tr>
+                      <%}%>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="underLine">
+                  <th colspan="2">總計</th>
+                  <th colspan="2"><%=orders[0].total %></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div>
+            <% if(orders[0].state != 0){ %> <% if(orders[0].state != 2){ %>
+            <input
+              type="button"
+              id="cancelOrder"
+              class="button-S"
+              order="<%=parseInt(orders[0].order_id)%>"
+              value="訂單取消"
+            />
+            <%}else{%>
+            <a href="/member/comment/edit/<%=parseInt(orders[0].order_id)%>">
+              <input type="button" class="button-S" value="我要評論" />
+            </a>
+            <input type="button" class="button-S" value="申請退貨" />
+            <%}%> <%}%>
+          </div>
+          <div>
+            <a href="/member/orderlist"> < 返回訂單查詢總覽</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

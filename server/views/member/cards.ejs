@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%-await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>付款設定</h5>
+            <span>請填寫確實資料，避免影響資料核對</span>
+          </div>
+        </div>
+        <div class="content cards">
+          <% cards.forEach((data,index)=>{%>
+          <form
+            class="lock center"
+            id="formCard_<%=parseInt(index)+1%>"
+            action=""
+            method="post"
+            card="<%=data.card_id%>"
+          >
+            <p>卡號</p>
+            <div>
+              <div>
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="card_1"
+                  placeholder="XXXX"
+                  value="<%=data.nums[0]%>"
+                  required
+                />
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="card_2"
+                  placeholder="XXXX"
+                  value="<%=data.nums[1]%>"
+                  required
+                />
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="card_3"
+                  placeholder="XXXX"
+                  value="<%=data.nums[2]%>"
+                  required
+                />
+                <input
+                  type="text"
+                  class="input-S num"
+                  name="card_4"
+                  placeholder="XXXX"
+                  value="<%=data.nums[3]%>"
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <div>
+                <label>到期日</label>
+                <input
+                  type="text"
+                  class="num input-S"
+                  name="expiry_date"
+                  placeholder="MMYY"
+                  value="<%=data.expiry_date%>"
+                />
+                <label>後三碼</label>
+                <input
+                  type="text"
+                  class="num input-S"
+                  name="security_code"
+                  placeholder="XXX"
+                  value="<%=	data.security_code%>"
+                />
+              </div>
+            </div>
+
+            <div class="submit">
+              <div>
+                <div class="cardEdit">
+                  <input type="button" class="button-S" value="修 改" />
+                </div>
+                <div class="cardSave" style="display: none">
+                  <input type="submit" class="button-S btnSave" value="儲 存" />
+                </div>
+                <div class="cardRemove">
+                  <input type="button" class="button-S btnDelete" value="刪 除" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <%})%> <%if (total<3){%>
+          <div id="addCard">
+            <input type="button" id="btnAddNewCard" value="新 增 信 用 卡" />
+          </div>
+          <form
+            class="center"
+            id="formCard_<%=parseInt(total)+1%>_new"
+            action=""
+            method="post"
+            style="display: none"
+          >
+            <p>卡號</p>
+            <div>
+              <div>
+                <input type="text" class="input-S num" name="card_1" placeholder="XXXX" required />
+                <input type="text" class="input-S num" name="card_2" placeholder="XXXX" required />
+                <input type="text" class="input-S num" name="card_3" placeholder="XXXX" required />
+                <input type="text" class="input-S num" name="card_4" placeholder="XXXX" required />
+              </div>
+            </div>
+            <div>
+              <div>
+                <label>到期日</label>
+                <input type="text" class="num input-S" name="expiry_date" placeholder="MMYY" />
+                <label>後三碼</label>
+                <input type="text" class="num input-S" name="security_code" placeholder="XXX" />
+              </div>
+            </div>
+
+            <div class="submit">
+              <div>
+                <div class="cardAdd">
+                  <input type="submit" class="button-S btnAdd" value="新 增" />
+                </div>
+              </div>
+            </div>
+          </form>
+          <%}%>
+        </div>
+      </section>
+    </main>
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

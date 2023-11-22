@@ -1,0 +1,29 @@
+.dark-body {
+  background-color: #1c1e23;
+}
+
+.dark-header {
+  background-color: #9c9d9e;
+  -webkit-box-shadow: 2px 2px 20px 2px rgba(255, 255, 255, 0.354);
+  box-shadow: 2px 2px 20px 2px rgba(255, 255, 255, 0.354);
+}
+
+.dark-out-item {
+  background-color: #9c9d9e;
+}
+
+.dark-aside {
+  background-color: #343434;
+}
+
+.dark-border {
+  border: 1px solid white;
+}
+
+.dark-footer {
+  background-color: #2b2b2b;
+}
+
+.dark-svg {
+  color: white;
+}

@@ -1,0 +1,137 @@
+@charset "UTF-8";
+body {
+  font-family: "Lato", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.navSide {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.navSide ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+  padding: 1em;
+}
+.navSide ul li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.navSide ul li form {
+  display: flex;
+  width: 100vw;
+}
+.navSide ul li form input {
+  border-radius: 10px 0px 0px 10px;
+  width: 70%; /* 使input元素占满父元素的宽度 */
+  padding: 0.25rem 0.5rem;
+  outline: none;
+}
+.navSide ul li form button[type=submit] {
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+  background-color: rgb(128, 129, 128);
+  padding: 0.25rem;
+  width: 80px;
+}
+.navSide ul li form button[type=submit] img {
+  width: 20px;
+}
+.navSide ul .my-border {
+  background-color: rgb(128, 129, 128);
+  width: 90%;
+  height: 2px;
+}
+
+.icon {
+  display: flex;
+}
+.icon a {
+  display: flex;
+  align-items: center;
+}
+.icon a svg {
+  color: #808180;
+  margin-right: 0.5em;
+}
+
+.sidenav-btn {
+  display: none;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #535353;
+}
+
+img[alt=cambuyLogo] {
+  width: 128px;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.navSide li {
+  list-style: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .sidenav {
+    display: none;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .sidenav input {
+    width: 60%;
+  }
+  .sidenav button[type=submit] {
+    width: 40%;
+  }
+  .sidenav {
+    padding-top: 120px;
+  }
+  .sidenav-btn {
+    display: block;
+  }
+  .sidenav a {
+    font-size: 36px;
+  }
+}/*# sourceMappingURL=sidenav.css.map */

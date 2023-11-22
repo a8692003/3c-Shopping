@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* 通知 */
+#member-content {
+  background-color: #cacaca;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 10%;
+  border-radius: 5px;
+  margin-top: 0px;
+}
+
+.member:hover #member-content {
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.individual-member {
+  display: flex;
+  align-items: center;
+  background-color: #ececec;
+  padding: 3%;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  margin: 5%;
+}
+.individual-member a {
+  color: black;
+}
+.individual-member:hover {
+  background-color: #b8b8b8;
+}
+
+.infor,
+.speeci {
+  color: #525252;
+}
+.individual-member h5 {
+  margin: 0;
+}

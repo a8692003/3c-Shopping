@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%-await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>留言紀錄</h5>
+          </div>
+        </div>
+        <div class="content">
+          <% if(total != 0){ %>
+          <div class="table">
+            <table>
+              <thead>
+                <tr class="underLine">
+                  <th>商品圖片</th>
+                  <th colspan="2">商品</th>
+                  <th>評論時間</th>
+                  <th>訂單</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% for(data of comments){%>
+                <tr>
+                  <td>
+                    <img src="/public/<%= data.img_src %>" alt="" srcset="" style="width: 100%" />
+                  </td>
+                  <td colspan="2">
+                    <%=data.prod_name %>
+                    <br />
+                    <%=data.spec_name %>
+                  </td>
+                  <td><%-data.comment_time %></td>
+                  <td><%-data.order_id %></td>
+                </tr>
+                <tr class="underLine">
+                  <td colspan="3">
+                    <div class="stars">
+                      <% for(var i = 0 ;i< data.comment_grade;i++){%>
+                      <i class="fa fa-star" style="font-size: 24px"></i>
+                      <%}%> <% for(var i = 0 ;i< 5-data.comment_grade;i++){%>
+                      <i class="fa fa-star-o" style="font-size: 24px"></i>
+                      <%}%>
+                    </div>
+                    <p><%-data.comment %></p>
+                  </td>
+                  <td>
+                    <a
+                      href="/member/comment/edit/<%=parseInt(data.order_id)%>/<%=data.prod_id%>/<%=data.spec_id%>"
+                    >
+                      <input type="button" class="button button-S" value="修改評論" />
+                    </a>
+                  </td>
+                  <td>
+                    <a href="/commodity/<%=data.prod_id%>/<%=data.spec_id%>">
+                      <input type="button" class="button button-S" value="查看商品" />
+                    </a>
+                  </td>
+                </tr>
+                <%}%>
+              </tbody>
+            </table>
+          </div>
+          <%-await include('./template/pages'); %><%}else{%>
+          <h4>尚未有留言紀錄</h4>
+          <%}%>
+        </div>
+      </section>
+    </main>
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

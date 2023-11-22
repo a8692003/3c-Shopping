@@ -1,0 +1,82 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font: 100% $font-stack;
+    color: $primary-color;
+    background-color: #F2F2F2;
+}
+
+
+.container,
+.row {
+    height: 100%;
+
+}
+
+.centerbox {
+    background-color: white;
+    width: 60%;
+    height: 100%;
+    border-left: 2px #ababab solid;
+    border-right: 2px #ababab solid;
+
+}
+
+.inputE {
+    width: 60%;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px #ababab solid;
+
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 10%;
+    &::before,
+    &::after {
+        content: "";
+        flex-grow: 1;
+        background-color: #000;
+        border-top: 2px solid #000; // 調整線的粗度
+        margin: 0 10px;
+    }
+}
+.btn3{
+ background-color: yellow;
+}
+.btn1{
+    width: 61%;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px #f2f2f2 solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn2{
+    width: 61%;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px #ababab solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    i.fab {
+        margin-right: 10px;  // 為圖標加入右邊的間距
+    }
+    &-white{
+        background-color: white;
+    }
+  
+}

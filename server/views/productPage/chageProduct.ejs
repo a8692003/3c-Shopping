@@ -1,0 +1,138 @@
+<section class="productBox row p-4 pt-0 m-0">
+  <% if (product.length==0) { %>
+  <div class="col-12 mb-5 pb-5">
+    <p class="text-center mb-5 pb-4">查無資料</p>
+  </div>
+  <% } %> <% function shuffle(array) { let currentIndex = array.length,
+  randomIndex; while (currentIndex > 0) { randomIndex = Math.floor(Math.random()
+  * currentIndex); currentIndex--; [array[currentIndex], array[randomIndex]] = [
+  array[randomIndex], array[currentIndex], ]; } return array; }
+  if(randomProd){shuffle(product);} %> <% for( let i = 0; i < product.length;
+  i++ ) {%>
+  <div class="col-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3 p-3">
+    <a
+      style="text-decoration: none; color: black"
+      href="/commodity/<%=product[i].prod_id%>/<%=product[i].spec_id%>"
+      class="prodToPItem"
+      title="<%=product[i].prod_name+product[i].spec_name%>"
+    >
+      <div
+        class="product"
+        style="
+          box-shadow: 10px 10px rgba(116, 116, 116, 0.171);
+          height: 420px;
+          border-radius: 10px;
+          padding-bottom: 16px;
+          background-color: white;
+        "
+      >
+        <img
+          style="width: 100%; height: 250px; object-fit: contain"
+          src="/public<%=product[i].img_src%>"
+          alt="/public<%=product[i].img_src%>"
+        />
+        <p style="font-size: 16px; margin: 16px 16px 0rem 16px">
+          <%=product[i].prod_name%>
+        </p>
+        <p style="font-size: 14px; margin: 0rem 0rem 32px 16px">
+          <%=product[i].spec_name%>
+        </p>
+        <span style="margin-left: 16px" title="<%=product[i].price%>"
+          >NT <%=product[i].price.toLocaleString()%></span
+        >
+        <button
+          style="
+            margin-right: 16px;
+            padding-left: 8px;
+            border: none;
+            background-color: white;
+            float: right;
+          "
+          class="ctrlBtn prodComparison"
+          title="加入比較"
+          data-prod_id="<%=product[i].prod_id%>"
+          data-spec_id="<%=product[i].spec_id%>"
+        >
+          <img
+            style="width: 30px; height: 30px"
+            src="/public/images/icons/clipboard2.svg"
+            alt="productgocart"
+          />
+        </button>
+        <div class="card-icon" style="display: inline-block; float: right">
+          <a
+            style="text-decoration: none"
+            class="favorite"
+            data-prod-id="<%=product[i].prod_id%>"
+            data-spec-id="<%=product[i].spec_id%>"
+          >
+            <svg
+              class="heart-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 38 34"
+              fill="none"
+            >
+              <path
+                d="M20.0048 31.8483C19.4318 32.0506 18.488 32.0506 17.9149 31.8483C13.0273 30.1798 2.10596 23.2191 2.10596 11.4213C2.10596 6.21348 6.30258 2 11.4767 2C14.5441 2 17.2576 3.48314 18.9599 5.77528C20.6621 3.48314 23.3925 2 26.443 2C31.6172 2 35.8138 6.21348 35.8138 11.4213C35.8138 23.2191 24.8924 30.1798 20.0048 31.8483Z"
+                stroke="black"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <a
+            style="text-decoration: none"
+            class="cart"
+            data-prod-id="<%=product[i].prod_id%>"
+            data-spec-id="<%=product[i].spec_id%>"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 39 40"
+              fill="none"
+            >
+              <path
+                d="M1.81378 2H4.9458C6.8898 2 8.41978 3.674 8.25778 5.6L6.76378 23.528C6.51178 26.462 8.83376 28.982 11.7858 28.982H30.9558C33.5478 28.982 35.8158 26.858 36.0138 24.284L36.9858 10.784C37.2018 7.796 34.9338 5.366 31.9278 5.366H8.6898"
+                stroke="black"
+                stroke-width="3"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M27.4637 38C28.7065 38 29.7137 36.9927 29.7137 35.75C29.7137 34.5073 28.7065 33.5 27.4637 33.5C26.221 33.5 25.2137 34.5073 25.2137 35.75C25.2137 36.9927 26.221 38 27.4637 38Z"
+                stroke="black"
+                stroke-width="3"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13.0638 38C14.3064 38 15.3138 36.9927 15.3138 35.75C15.3138 34.5073 14.3064 33.5 13.0638 33.5C11.8211 33.5 10.8138 34.5073 10.8138 35.75C10.8138 36.9927 11.8211 38 13.0638 38Z"
+                stroke="black"
+                stroke-width="3"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M14.4138 12.7999H36.0138"
+                stroke="black"
+                stroke-width="3"
+                stroke-miterlimit="10"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </a>
+  </div>
+  <% } %>
+</section>

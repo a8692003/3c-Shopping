@@ -1,0 +1,23 @@
+<table class="center-table ">
+    <thead>
+        <% nameData.forEach(function(product) { %>
+            <th colspan="2">
+                <%= product.prod_name %>
+            </th>
+            <% }); %>
+    </thead>
+    <tbody>
+        <% attributes.forEach(attr=> { %>
+            <tr>
+                <td><b>
+                        <%= attr %>
+                    </b></td>
+                <% data.forEach(item=> { %>
+                    <td>
+                        <%= item[attr] %>
+                    </td>
+                    <% }); %>
+            </tr>
+            <% }); %>
+    </tbody>
+</table>

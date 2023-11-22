@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+    <main>
+      <section class="member container container-L">
+        <%- await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>訂單檢視</h5>
+            <span>實際狀況與顯示若有誤差，請耐心等候資料更新</span>
+          </div>
+        </div>
+        <div class="content">
+          <% if(total != 0){ %>
+          <div class="table">
+            <table>
+              <thead>
+                <tr class="underLine">
+                  <th>訂單編號</th>
+                  <th>訂單時間</th>
+                  <th>價格</th>
+                  <th>付款</th>
+                  <th>狀態</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% orders.forEach((element,index)=>{ %>
+                <tr>
+                  <td>
+                    <a href="/member/order/<%=parseInt(element.order_id)%>">
+                      <%= element.order_id %>
+                    </a>
+                  </td>
+                  <td><%- element.order_date %></td>
+                  <td><%= element.total %></td>
+                  <td>
+                    <%=element.pay_method_nmae %>
+                    <br />
+                    <span class="<%= element.pay===0 ?'alert':''%>">
+                      ( <%=element.pay_name %> )
+                    </span>
+                  </td>
+                  <td>
+                    <span class="<%=element.state===0?'alert': '' %>">
+                      <%=element.state_name %>
+                    </span>
+                  </td>
+                </tr>
+                <tr class="underLine">
+                  <td colspan="5">
+                    <div class="collapse">
+                      <div><p>查看清單</p></div>
+                      <div>
+                        <table>
+                          <tr>
+                            <th>品項</th>
+                            <th>價格</th>
+                            <th>數量</th>
+                          </tr>
+                          <% for(data of element.order_detail){ %>
+                          <tr>
+                            <td><%= data.prod_name %> &nbsp;<%= data.spec_name %></td>
+                            <td><%= data.price %></td>
+                            <td><%= data.count %></td>
+                          </tr>
+                          <% }%>
+                        </table>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+          <%- await include('./template/pages'); %> <%}else{%>
+          <h4>尚未有訂單資料</h4>
+          <%}%>
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

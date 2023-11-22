@@ -1,0 +1,143 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: rgb(242, 242, 242);
+  width: 100%;
+  box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, 0.204);
+}
+header nav.header ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+header nav.header ul li {
+  margin: 0.25rem 2rem;
+}
+header nav.header ul li img[alt=cambuyLogo] {
+  width: 128px;
+}
+header nav.header ul li form input {
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid rgb(242, 242, 242);
+  padding: 0.25rem 0.5rem;
+  width: 30vw;
+}
+header nav.header ul li form button[type=submit] {
+  border-radius: 0px 10px 10px 0px;
+  border: none;
+  background-color: rgb(128, 129, 128);
+  padding: 0.25rem;
+  width: 108px;
+}
+header nav.header ul li form button[type=submit] img {
+  width: 20px;
+}
+header nav.header ul li div#search-result {
+  width: 30vw;
+  background-color: rgb(255, 255, 255);
+  border-left: 2px solid rgb(128, 129, 128);
+  border-right: 2px solid rgb(128, 129, 128);
+  border-bottom: 2px solid rgb(128, 129, 128);
+  border-radius: 0px 0px 10px 10px;
+  display: none;
+  position: absolute;
+}
+header nav.header ul li div#search-result ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  list-style-type: none;
+  align-items: start;
+  justify-content: start;
+}
+header nav.header ul li div#search-result ul li {
+  margin: 0;
+  width: 100%;
+}
+header nav.header ul li div#search-result ul li:hover {
+  background-color: rgb(242, 242, 242);
+}
+header nav.header ul li div#search-result ul li a {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+header nav.header ul li label.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+header nav.header ul li label.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+header nav.header ul li label.switch input:checked + .slider {
+  background-color: rgb(0, 0, 0);
+}
+header nav.header ul li label.switch input:focus + .slider {
+  box-shadow: 0 0 1px rgb(0, 0, 0);
+}
+header nav.header ul li label.switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+header nav.header ul li span.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+header nav.header ul li span.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+header nav.header ul li span.slider.round {
+  border-radius: 34px;
+  padding-left: 36px;
+  padding-top: 4px;
+}
+header nav.header ul li span.slider.round:before {
+  border-radius: 50%;
+}
+header nav.header ul li span.slider.moon {
+  border-radius: 34px;
+  padding-left: 12px;
+  padding-top: 4px;
+  color: rgb(255, 255, 255);
+}
+header nav.header ul li span.slider.moon:before {
+  border-radius: 50%;
+}
+header nav.header ul li .sun {
+  display: block;
+}
+header nav.header ul li .moon {
+  display: none;
+}
+header nav.header ul li a {
+  text-decoration: none;
+}
+header nav.header ul li a img {
+  width: 24px;
+}/*# sourceMappingURL=header.css.map */

@@ -1,0 +1,15 @@
+<div class="memberList">
+  <ul>
+    <li <%= type==0 ?'class=active' : '' %>><a href="/member/data">會員資料</a></li>
+    <!-- <li <%= /*type==0.5 ?'class=active' : ''*/ %>><a href="/member/auth">會員綁定</a></li> -->
+    <li <%= type==1 ?'class=active' : '' %>><a href="/member/password_change">修改密碼</a></li>
+    <%if (right==1){%>
+      <li <%= type==6 ?'class=active' : '' %>><a href="/member/seller">上架中心</a></li>
+    <%}else if(right ==2){%>
+    <li <%= type==2 ?'class=active' : '' %>><a href="/member/cards">付款設定</a></li>
+    <li <%= type==3 ?'class=active' : '' %>><a href="/member/orderlist">查看訂單</a></li>
+    <li <%= type==4 ?'class=active' : '' %>><a href="/member/collect">收藏商品</a></li>
+    <li <%= type==5 ?'class=active' : '' %>><a href="/member/comment">留言紀錄</a></li>
+    <%}%>
+  </ul>
+</div>

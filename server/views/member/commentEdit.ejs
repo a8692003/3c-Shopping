@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/member_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+
+    <main>
+      <section class="member container container-L">
+        <%- await await include('./template/memberList'); %>
+        <div class="subtitle">
+          <div class="group group-left">
+            <h5>留言紀錄</h5>
+          </div>
+        </div>
+        <div class="content">
+          <%comments.forEach((data,index)=>{%>
+          <form
+            id="formComment_<%=index%>"
+            action=""
+            method="post"
+            order="<%=data.order_id%>"
+            prod="<%=data.prod_id%>"
+            spec="<%=data.spec_id%>"
+          >
+            <div class="">
+              <p><%=data.prod_name%>&nbsp;<%=data.spec_name%></p>
+            </div>
+            <%if(data.comment_grade != 0){%>
+            <div class=""><p>評論時間 : <%-data.comment_time%></p></div>
+            <%}%>
+            <div class="spacing stars" value=" <%=data.comment_grade%>">
+              <%for(let i = 0 ; i < 5 ; i++){%>
+
+              <div class="star" id="grade_<%=parseInt(i)+1%>" value=" <%=parseInt(i)+1%>">
+                <% if(i < data.comment_grade){%>
+
+                <i class="fa fa-star" style="font-size: 24px"></i><%}else{%><i
+                  class="fa fa-star-o"
+                  style="font-size: 24px"
+                ></i>
+                <%}%>
+              </div>
+              <%}%>
+            </div>
+            <div>
+              <textarea
+                name="content"
+                id="contTextArea"
+                rows="10"
+                placeholder="請填寫評論，字數超過250將不被記錄"
+                required
+              >
+<%=data.comment%></textarea
+              >
+            </div>
+            <div class="submit">
+              <input type="submit" value="送 出" />
+            </div>
+          </form>
+          <div></div>
+
+          <%})%>
+        </div>
+      </section>
+    </main>
+    <%-await include('../footerWidth.ejs'); %>
+</html>

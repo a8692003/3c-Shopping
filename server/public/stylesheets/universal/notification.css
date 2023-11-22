@@ -1,0 +1,32 @@
+/* 通知 */
+#notification-content {
+  background-color: #cacaca;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 25%;
+  border-radius: 5px;
+  max-height: 40em;
+  overflow-y: auto;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s;
+  margin-top: 28px;
+}
+
+#notification:hover #notification-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.individual-notification {
+  background-color: #ececec;
+  padding: 1%;
+  border-radius: 5px;
+  width: 90%;
+  margin: 5%;
+  transition: background-color 0.3s;
+}
+
+.individual-notification:hover {
+  background-color: #b8b8b8;
+}

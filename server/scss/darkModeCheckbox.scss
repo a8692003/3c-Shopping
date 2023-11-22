@@ -1,0 +1,95 @@
+:root {
+  --color_1: #fff;
+  --color_2: #f2f2f2;
+  --color_3: #ccc;
+  --color_4: #a5a5a5;
+  --color_5: #808180;
+  --color_6: #000;
+  &:has(#mode:checked) {
+    --color_1: #222;
+    --color_2: #333;
+    --color_3: #555;
+    --color_4: #666;
+    --color_5: #777;
+    --color_6: #eee;
+  }
+}
+
+#mode {
+  display: none;
+
+  & + label {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 75px;
+    height: 35px;
+    padding: 0;
+    margin: 0;
+    border: {
+      style: solid;
+      color: transparent;
+      width: 2px;
+      radius: 35px;
+    }
+    background-color: var(--color_5);
+    transition: 0.2s;
+
+    & > span {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      margin: 0;
+      border: {
+        radius: 35px;
+      }
+      background-color: var(--color_1);
+      transition: 0.2s;
+    }
+    &:before {
+      content: '☽';
+      left: 5px;
+      opacity: 0;
+    }
+    &:after {
+      content: '☼';
+      right: 5px;
+      opacity: 1;
+    }
+    &:after,
+    &::before {
+      position: absolute;
+      top: 0;
+      width: 1em;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      color: var(--color_6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      box-shadow: none;
+      background: none;
+      transform: none;
+      transition: none;
+    }
+  }
+  &:checked {
+    & + label {
+      &:before {
+        opacity: 1;
+      }
+      &:after {
+        opacity: 0;
+      }
+
+      & > span {
+        left: 40px;
+      }
+    }
+  }
+}

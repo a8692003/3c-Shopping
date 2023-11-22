@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy - <%=title%></title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/style.min.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+
+    <script src="/public/js/jquery-3.6.0.js"></script>
+
+    <script async src="/public/js/form.js"></script>
+    <script async src="/public/js/login_data_send.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </head>
+  <body>
+    <!-- 插入header的保留位 -->
+    <%-await include('../header'); %>
+
+    <main>
+      <section class="member container container-S">
+        <div class="subtitle">
+          <div class="group">
+            <a href="/login" class="active"><h5>登入</h5></a>
+            <a href="/register"><h5>註冊</h5></a>
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <h5>
+              <span class="alert" id="alert"></span>
+            </h5>
+          </div>
+
+          <form id="formLogin" action="" method="post">
+            <div class="spacing">
+              <label for="iptAcc">帳號</label>
+              <input type="text" name="acc" id="iptAcc" placeholder="請輸入您的帳號" required />
+            </div>
+            <div class="spacing">
+              <label for="iptPwd">密碼</label>
+              <input type="password" name="pwd" id="iptPwd" placeholder="請輸入您的密碼" required />
+            </div>
+            <div class="submit" style="flex-direction: column;">
+              <input type="submit" value="登 入" />
+              <br>
+              <p>
+                <a href="/login/forgetPassword">忘記密碼 ?</a>
+              </p>
+            </div>
+          </form>
+          
+
+
+          <div>
+            <h4 style="text-align: center;">
+              第三方快速登入、註冊           
+              <br>
+              <span style="font-size: .6em;font-weight: normal;">僅能以買家身分進行第三方快速註冊</span>
+              <br/>
+              <br/>
+              <div>
+                <a href="/auth/google">
+                  <input type="button" class="button" value="GOOGLE"></input>
+                </a>
+                <a href="/auth/facebook">
+                  <input type="button" class="button " value="FACEBOOK"></input>
+                </a>
+              </div>
+            </h4>
+          </div>
+
+        
+        </div>
+      </section>
+    </main>
+    <!-- 插入footer的保留位 -->
+    <%-await include('../footerWidth.ejs'); %>
+  </body>
+</html>

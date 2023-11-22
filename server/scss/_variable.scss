@@ -1,0 +1,54 @@
+:root {
+  --color_1: #fff;
+  --color_2: #f2f2f2;
+  --color_3: #ccc;
+  --color_4: #a5a5a5;
+  --color_5: #808180;
+  --color_6: #000;
+  &:has(#mode:checked) {
+    --color_1: #222;
+    --color_2: #333;
+    --color_3: #555;
+    --color_4: #666;
+    --color_5: #777;
+    --color_6: #eee;
+  }
+}
+// -----------------
+%displayFlexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%roundAll {
+  border-radius: 10px;
+}
+%roundTop {
+  border-radius: 10px 10px 0 0;
+}
+%roundButton {
+  border-radius: 0 0 10px 10px;
+}
+%roundNone {
+  border-radius: 0;
+}
+%underLine {
+  border : {
+    width: 0 0 1px 0;
+    style: solid;
+    color: var(--color_5);
+  }
+}
+%overflow-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%headerShadow {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.25);
+}
+%hoverShadow {
+  box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.25);
+}

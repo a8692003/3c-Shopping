@@ -1,0 +1,10 @@
+/server/node_modules/
+node_modules/
+
+.vscode
+
+.env
+
+*.zip
+*.rar
+*.DS_Store

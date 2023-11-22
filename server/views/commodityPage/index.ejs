@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComBuy - 商品</title>
+  <link rel="icon" href="/public/images/logo/favicon.ico" />
+  <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="/public/stylesheets/commodityPage/index.css" />
+  <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+  <link rel="stylesheet" href="/public/stylesheets/out.css" />
+  <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+  <link rel="stylesheet" href="/public/stylesheets/header.css" />
+  <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+  <link rel="stylesheet" href="/public/stylesheets/universal/footer.css" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="/public/js/jquery-3.6.0.js"></script>
+  <script src="/public/js/bootstrap.bundle.js"></script>
+  <script src="/public/js/commodityPage/productJS.js"></script>
+
+  <title>商品詳細</title>
+</head>
+
+<body>
+  <!-- 導覽列 -->
+  <%-await include('../header.ejs') %>
+    <!-- 導覽列 -->
+
+    <main class="container">
+      <!-- 商品 -->
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="main-photo-container center">
+            <img src="/public/<%= imageDataT0.dir %>/<%= imageDataT0.filename %>" alt="產品圖片" class="w-100"/>
+          </div>
+        </div>
+        <div class="col-md-6 mt-4 mt-md-3">
+          <h2 class="mt-4"><strong>
+              <%= nameData[0].prod_name %>
+            </strong></h2>
+          <hr />
+          <p><b>
+              <%= data[0].spec_name %>
+            </b></p>
+          <h4 class="dollar"><strong>NT <%= priceData[0].price.toLocaleString()%></strong></h4>
+          <% for(var i=0; i < tagData.length; i++){ %>
+            <span type="button" class="btn btn-outline-secondary">
+              <%= tagData[i].content %>
+            </span>
+            <% } %>
+              <% function truncateListItemText(text, maxLength) { if (text.length> maxLength) {
+                return text.substring(0, maxLength) + '...';
+                }
+                return text;
+                }
+                %>
+
+                <ul>
+                  <%if(data[0].cpu==""){%>
+                   <p class="mt-3"></p>
+                  <%}else{%>
+                  <li class="mt-3">
+                    <%= truncateListItemText(data[0].cpu, 40) %>
+                  </li>
+                  <li>
+                    <%= truncateListItemText(data[0].gpu, 50) %>
+                  </li>
+                  <li>
+                    <%= truncateListItemText(data[0].ram, 50) %>
+                  </li>
+                  <%}%>
+                </ul>
+
+
+                <div class="purchaseNumber">
+                  <label for="num"><b>數量&nbsp;:&nbsp;&nbsp;</b></label>
+                  <button id="minus" onclick="minus()">-</button>
+                  <input type="text" id="num" value="1" style="width: 30px; text-align: center" readonly />
+                  <button id="plus" onclick="plus()">+</button>
+
+                  <!-- 顯示庫存 -->
+                  <span class="ms-3"><b>剩下<%= remainingStock %>台</b></span>
+                </div>
+
+                <!-- 網頁顯示按鈕 -->
+                <div class="d-none d-sm-block card-icon">
+                  <button class="btn btn bg-white btn-lg me-2 no-link mt-3 favorite" id="collect"
+                    data-prod_id="<%= prodId %>" data-spec_id="<%= specId %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-heart " viewBox="0 0 16 16">
+                      <path
+                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                    </svg>
+                    加入收藏
+                  </button>
+                  <button class="cart btn bg-white btn-lg me-2 no-link mt-3" id="cart" data-prod_id="<%= prodId %>"
+                    data-spec_id="<%= specId %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-cart-plus" viewBox="0 0 16 16">
+                      <path
+                        d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                      <path
+                        d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                    加入購物車
+                  </button>
+                  <button class="btn bg-black text-white btn-lg me-2 mt-3" id="direct-buy" data-prod_id="<%= prodId %>"
+                    data-spec_id="<%= specId %>">
+                    直接購買
+                  </button>
+                </div>
+
+                <!-- RWD 手機顯示按鈕 -->
+                <div class="d-block d-sm-none fixed-bottom">
+                  <div class="container-fluid">
+                    <div class="d-flex justify-content-center">
+                      <button class="btn btn bg-white btn-lg me-2 no-link fs-6" id="collect"
+                        data-prod_id="<%= prodId %>" data-spec_id="<%= specId %>">
+                        <i class="bi bi-heart"></i>
+                        加入收藏
+                      </button>
+                      <button class="cart btn bg-white btn-lg me-2 no-link fs-6" id="cart" data-prod_id="<%= prodId %>"
+                        data-spec_id="<%= specId %>">
+                        <i class="bi bi-cart-plus"></i>
+                        加入購物車
+                      </button>
+                      <button class="btn bg-black btn-lg text-white fs-6 text-center" id="direct-buy"
+                        data-prod_id="<%= prodId %>" data-spec_id="<%= specId %>">
+                        直接購買
+                      </button>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
+        <!-- 商品資訊/商品內容 -->
+        <section class="bg-white container mt-5">
+          <ul class="nav nav-pills justify-content-center pt-4">
+            <% if (imageDataT1.length> 0) { %>
+              <li class="nav-item">
+                <a data-bs-toggle="pill" class="nav-link active" href="#information">商品資訊</a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="pill" class="nav-link" href="#specification">商品規格</a>
+              </li>
+              <% } %>
+          </ul>
+          <% if (imageDataT1.length <=0) { %>
+            <h2 class="text-center mt-4"><strong>商品規格</strong></h2>
+            <%-await include('table.ejs') %>
+              <% } %>
+                <div class="tab-content container mt-5">
+                  <% if (imageDataT1.length> 0) { %>
+                    <div class="tab-pane active show center" id="information">
+                      <% for(img of imageDataT1){%>
+                        <img src="/public/<%= img.dir %>/<%= img.filename %>" alt="產品資訊" class="mb-5 w-100" />
+                        <%}%>
+                    </div>
+                    <% } %>
+                      <div class="tab-pane" id="specification"><%-await include('table.ejs') %></div>
+                </div>
+        </section>
+
+        <!-- 商品評價 -->
+        <section class="container bg-white mt-3">
+          <h2 class="pt-4 evaluate text-center"><strong>商品評價</strong></h2>
+          <hr />
+          <% commentData.forEach(function(comment) { %>
+            <div class="circle">
+              <img src="/public<%= comment.photo %>">
+
+            </div>
+            <div class="buyer">
+              <span>
+                <%= comment.name %>
+              </span>
+              <div class="rating mt-1">
+                <% for ( let i=1 ; i <=5; i++ ) { %>
+                  <span class="bi bi-star<%= i <= comment.comment_grade ? '-fill' : '' %>"></span>
+                  <% } %>
+              </div>
+
+              <p class="mt-2">
+                <%= comment.comment_time %>
+              </p>
+            </div>
+            <div class="comment">
+              <p>
+                <%= comment.comment %>
+              </p>
+            </div>
+            <hr />
+            <% }); %>
+        </section>
+
+        <!-- 相關商品 -->
+        <%-await include('relatedProduct.ejs') %>
+
+          <button type="button" id="BackTop" class="toTop-arrow"></button>
+          <!-- 在 index.ejs 中抓取 user_id -->
+          <div id="userId" data-user-id="<%= userId %>"></div>
+    </main>
+
+    <!-- footer -->
+    <%-await include('../footerWidth.ejs'); %>
+      <script src="/public/js/universal/header.js"></script>
+</body>
+
+</html>

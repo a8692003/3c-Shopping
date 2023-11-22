@@ -1,0 +1,58 @@
+<header>
+  <nav class="header">
+    <ul>
+      <li>
+        <a href="/" title="回首頁"><img src="/public/images/logo/cambuyLogo.png" alt="cambuyLogo" /></a>
+      </li>
+      <li>
+        <form>
+          <input type="text" name="search" placeholder="搜尋商品" /><button type="submit" title="搜尋">
+            <img src="/public/images/icons/search.png" alt="search" />
+          </button>
+        </form>
+        <div id="search-result">
+          <ul>
+            <li><a href="#">1</a></li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <label class="switch" title="深/淺色模式">
+          <input type="checkbox" id="dark-mode-toggle" />
+          <span class="slider moon">☽</span>
+          <span class="slider round sun">☼</span>
+        </label>
+      </li>
+      <li>
+        <div class="notification">
+          <a href="#" title="通知" id="notification-link"><img src="/public/images/icons/advice.png" alt="advice" /></a>
+          <div id="notification-content">
+            <% for (let i=0; i < orderDate.length; i++) { %>
+              <a href="/member/order/<%= orderDate[i].order_id %>" class="text-black">
+                <div class="individual-notification container">
+                  <h5><b>訂單通知</b></h5>
+                  <br>
+                  <p>已收到你的訂單 <%= orderDate[i].order_id %>
+                  </p>
+                  <span><i class="bi bi-clock"></i>
+                    <%= orderDate[i].order_date %>
+                  </span>
+                </div>
+              </a>
+              <% } %>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="/login" title="會員中心"><img src="/public/images/icons/member.png" alt="member" /></a>
+      </li>
+      <li>
+        <a href="/shopCart" title="購物車"><img src="/public/images/icons/buy-cart.png" alt="buy-cart" /></a>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ComBuy</title>
+    <link rel="icon" href="/public/images/logo/favicon.ico" />
+    <link rel="stylesheet" href="/public/stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="/public/stylesheets/sidenav.css" />
+    <link rel="stylesheet" href="/public/stylesheets/fontPage/index.css" />
+    <link rel="stylesheet" href="/public/stylesheets/out.css" />
+    <link rel="stylesheet" href="/public/stylesheets/dark.css" />
+    <link rel="stylesheet" href="/public/stylesheets/header.css" />
+    <link rel="stylesheet" href="/public/stylesheets/darkModeCheckbox.css" />
+    <link rel="stylesheet" href="/public/stylesheets/universal/notification.css" />
+  </head>
+
+  <body>
+    <%-await include('../header'); %>
+
+    <main class="container-fluid">
+      <div class="row">
+        <!-- 左邊品牌列表 -->
+        <aside class="col-xl-2 d-none d-lg-none d-xl-block">
+          <nav class="navSide">
+            <ul>
+              <% for( let i=0; i < brand.length; i++ ) { %>
+              <li class="brand">
+                <img
+                  style="width: 20px"
+                  src="<%=brand[i].img  ? '/public' + brand[i].img :''%>"
+                  alt=""
+                />
+                <a
+                  href="./product/<%=brand[i].brand_id%>"
+                  value="<%=brand[i].brand_id%>"
+                  title="<%=brand[i].brand%>"
+                >
+                  <%=brand[i].brand%>
+                </a>
+              </li>
+              <% } %>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- container -->
+        <div class="col-12 my-col-10 col-xl-10">
+          <div class="row">
+            <!-- 輪播 -->
+            <div class="my-carousel col-12">
+              <div
+                id="carouselExampleIndicators"
+                class="carousel slide custom-carousel"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                  ></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/public/images/carousel/1.png" class="d-block w-100" alt="..." />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/public/images/carousel/2.png" class="d-block w-100" alt="..." />
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/public/images/carousel/3.png" class="d-block w-100" alt="..." />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev d-flex align-items-center"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev"
+                >
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next d-flex align-items-center"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next"
+                >
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <!-- 商品item -->
+            <section class="col-12">
+              <h3 class="ms-5 mt-5">熱銷商品</h3>
+              <div class="section-container">
+                <div class="row card-item-wrap"></div>
+              </div>
+            </section>
+
+            <!-- ads -->
+            <div class="ads col-12">
+              <img src="/public/images/carousel/school.png" alt="chool.png" />
+            </div>
+
+            <!-- 商品item2 -->
+            <section class="col-12 section2">
+              <h3 class="ms-5 mt-5">開學季學生主打</h3>
+              <div class="row card-item-wrap2"></div>
+            </section>
+
+            <!-- ads -->
+            <div class="ads col-12">
+              <img src="/public/images/carousel/gamming.png" alt="chool.png" />
+            </div>
+
+            <!-- 商品item3 -->
+            <section class="col-12 section2 mb-5">
+              <h3 class="ms-5 mt-5">電競機</h3>
+              <div class="row card-item-wrap3"></div>
+            </section>
+            <!-- footer -->
+            <%-await include('../footer'); %>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/public/js/jquery-3.6.0.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/fontPage/fontPage.js"></script>
+    <script src="/public/js/sidenav.js"></script>
+    <script src="/public/js/swichDark_Light.js"></script>
+    <script src="/public/js/universal/header.js"></script>
+  </body>
+</html>
