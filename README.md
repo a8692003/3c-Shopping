@@ -3,6 +3,8 @@
 我主要負責項目為首頁製作、廣告圖banner製作以及購物車功能  
 ## 首頁
 <img width="1274" alt="螢幕擷取畫面 2023-11-22 103819" src="https://github.com/a8692003/3c-Shopping/assets/142565228/5935f237-489b-43c6-95e5-7d74a75ae3d3">  
+<img width="1273" alt="螢幕擷取畫面 2023-11-24 134659" src="https://github.com/a8692003/3c-Shopping/assets/142565228/c024a6e4-1557-4cb7-a422-4db854515f42">
+<img width="1274" alt="螢幕擷取畫面 2023-11-24 134741" src="https://github.com/a8692003/3c-Shopping/assets/142565228/5d017f38-005a-4092-99ef-52ad700fbe6e">
 
 ## 購物車  
 <img width="1264" alt="螢幕擷取畫面 2023-11-22 104307" src="https://github.com/a8692003/3c-Shopping/assets/142565228/31777099-bd24-4802-a0e6-e6075abfd545">  
