@@ -1,6 +1,15 @@
 # 3c購物網站  
 此專案是由我與4位組員共同開發的project
 我主要負責項目為首頁製作、廣告圖banner製作以及購物車功能  
+
+# 使用技術
+1.HTML  
+2.CSS/SCSS  
+3.JavaScript  
+4.jQuery  
+5.Node.js  
+6.Bootstrap   
+
 ## 首頁
 <img width="1274" alt="螢幕擷取畫面 2023-11-22 103819" src="https://github.com/a8692003/3c-Shopping/assets/142565228/5935f237-489b-43c6-95e5-7d74a75ae3d3">  
 <img width="1273" alt="螢幕擷取畫面 2023-11-24 134659" src="https://github.com/a8692003/3c-Shopping/assets/142565228/c024a6e4-1557-4cb7-a422-4db854515f42">
